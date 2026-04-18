@@ -1,5 +1,6 @@
-# Large / external data
-data/bench/corpus/corpus.json
+# Bench data is distributed via HuggingFace
+# (`huggingface-cli download longjm/SRA-Bench --repo-type dataset --local-dir data/bench`).
+data/bench/
 data/external/
 
 # Experiment outputs

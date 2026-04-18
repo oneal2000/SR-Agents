@@ -1,5 +1,9 @@
 # SR-Agents
 
+[![Dataset on 🤗](https://huggingface.co/datasets/huggingface/badges/resolve/main/dataset-on-hf-md.svg)](https://huggingface.co/datasets/longjm/SRA-Bench)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.10--3.12-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
+
 A benchmark and research toolkit for **skill-retrieval-augmented LLM
 agents**.
 
@@ -19,13 +23,11 @@ repository provides:
 * **SRA-Bench** — 5,400 capability-intensive test instances across six
   task families, each paired with manually curated gold skill(s),
   embedded in a realistic skill library of 26,262 skills (636 gold +
-  25,626 web-collected distractors);
+  25,626 web-collected distractors).
 * **SR-Agents** — a baseline family of skill-retrieval-augmented
-  agents, decomposed into pluggable Retriever / Provider / Engine
-  components so new methods can be added by writing one small file;
-* A three-stage evaluation pipeline (retrieve → infer → evaluate) that
-  measures the full SRA process and lets you diagnose where a method
-  succeeds or fails.
+  agents, spanning five skill-use methods (LLM Direct, Oracle Skill,
+  BM25 Top-1, BM25 Select, Progressive Disclosure) and six retrievers
+  (BM25, TF-IDF, BGE, Contriever, Hybrid, BM25 + LLM Rerank).
 
 ![SRA paradigm overview](assets/overall.png)
 
@@ -60,21 +62,19 @@ Requires Python 3.10 – 3.12.
 pip install -e .       # or: uv sync
 ```
 
-Unzip the skill library:
+Download SRA-Bench (skill corpus + test instances) from the
+[HuggingFace dataset page](https://huggingface.co/datasets/longjm/SRA-Bench):
 
 ```bash
-unzip data/bench/corpus/corpus.json.zip -d data/bench/corpus/
+huggingface-cli download longjm/SRA-Bench --repo-type dataset \
+    --local-dir data/bench
 ```
-
-Dense retrievers (`bge`, `contriever`) download their checkpoints from
-the HuggingFace Hub on first use (~440 MB for BGE, ~440 MB for
-Contriever).
 
 <details><summary>ToolQA external corpus (only needed to run ToolQA)</summary>
 
 Download from the
-[ToolQA Google Drive link](https://drive.google.com/file/d/1zRbHzPW2x4dDcfmphBWlan8cxUCRNmqk/view?usp=drive_link)
-(~2.6 GB), unzip, and place the result under `data/external/toolqa/`.
+[ToolQA Google Drive link](https://drive.google.com/file/d/1zRbHzPW2x4dDcfmphBWlan8cxUCRNmqk/view?usp=drive_link),
+unzip, and place the result under `data/external/toolqa/`.
 </details>
 
 Inference requires an OpenAI-compatible chat endpoint. Point
