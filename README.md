@@ -27,6 +27,13 @@ repository provides:
   measures the full SRA process and lets you diagnose where a method
   succeeds or fails.
 
+![SRA paradigm overview](assets/overall.png)
+
+*The Skill-Retrieval Augmentation paradigm: the agent retrieves candidate
+skills from a large external skill library, selectively incorporates
+useful ones into context, and applies them for downstream reasoning
+and acting.*
+
 ## SRA-Bench at a glance
 
 **6 source datasets · 5,400 test instances · 636 gold skills** embedded
