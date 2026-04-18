@@ -1,0 +1,24 @@
+# Large / external data
+data/bench/corpus/corpus.json
+data/external/
+
+# Experiment outputs
+results/
+
+# Environment
+.venv/
+.uv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# OS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/

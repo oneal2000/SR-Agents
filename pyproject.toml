@@ -1,0 +1,92 @@
+[project]
+name = "sragents"
+version = "0.1.0"
+description = "SR-Agents: baseline skill-retrieval-augmented agents and the SRA-Bench benchmark for LLM skill retrieval, incorporation, and application."
+requires-python = ">=3.10,<3.13"
+readme = "README.md"
+license = { file = "LICENSE" }
+
+dependencies = [
+    "pyyaml>=6.0",
+    "tqdm>=4.67.0",
+    "requests>=2.32.0",
+    "pandas>=2.2.0",
+    "numpy>=2.0.0",
+    "scipy>=1.14.0",
+    "openai>=1.50.0",
+    "sympy>=1.12",
+    "latex2sympy2>=1.0.0",
+    "torch>=2.4.0",
+    "transformers>=4.45.0",
+    "networkx>=3.0",
+    "sentence-transformers>=3.0.0",
+    "accelerate>=1.0.0",
+    "tree-sitter>=0.22.0",
+    "tree-sitter-python>=0.21.0",
+    # BigCodeBench unittest execution dependencies.
+    "beautifulsoup4",
+    "blake3",
+    "chardet",
+    "cryptography",
+    "django",
+    "dnspython",
+    "docxtpl",
+    "faker",
+    "flask",
+    "flask-login",
+    "flask-restful",
+    "flask-wtf",
+    "flask-mail",
+    "folium",
+    "gensim",
+    "geopandas",
+    "geopy",
+    "holidays",
+    "levenshtein",
+    "lxml",
+    "matplotlib",
+    "mechanize",
+    "natsort",
+    "nltk",
+    "opencv-python-headless",
+    "openpyxl",
+    "pillow",
+    "prettytable",
+    "psutil",
+    "pycryptodome",
+    "pyfakefs",
+    "pyquery",
+    "pytest",
+    "python-http-client",
+    "python-dateutil",
+    "python-docx",
+    "pytz",
+    "requests-mock",
+    "rsa",
+    "scikit-image",
+    "scikit-learn",
+    "seaborn",
+    "sendgrid",
+    "shapely",
+    "statsmodels",
+    "textblob",
+    "texttable",
+    "werkzeug",
+    "wikipedia",
+    "wordcloud",
+    "wordninja",
+    "wtforms",
+    "xlrd",
+    "xlwt",
+    "xmltodict",
+]
+
+[project.scripts]
+sragents = "sragents.cli.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sragents"]

@@ -1,0 +1,2614 @@
+[
+  {
+    "instance_id": "champ_00000",
+    "dataset": "champ",
+    "question": "Let a string consist of digit 1, 2, 3. How many such strings of length 6 have adjacent digit differing by less than or equal to 1?",
+    "skill_annotations": [
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "239"
+    }
+  },
+  {
+    "instance_id": "champ_00001",
+    "dataset": "champ",
+    "question": "How many sequences of positive integer numbers have sum n, as an expression of n?",
+    "skill_annotations": [
+      "champ_013"
+    ],
+    "eval_data": {
+      "answer": "2^(n-1)"
+    }
+  },
+  {
+    "instance_id": "champ_00002",
+    "dataset": "champ",
+    "question": "A diagnoal in a convex polygon is any line connecting two non-adjacent vertices. How many diagonals are there in a convex polygon of n vertices, as an expression of n?",
+    "skill_annotations": [
+      "champ_016",
+      "champ_030"
+    ],
+    "eval_data": {
+      "answer": "n(n-3)/2"
+    }
+  },
+  {
+    "instance_id": "champ_00003",
+    "dataset": "champ",
+    "question": "Along a one-way street there are n parking lots. One-by-one n cars numbered 1 to n enter the street. Each driver i heads to his favorite parking lot a_i, and, if it is free, he occupies it. Otherwise, he continues to the next free lot and occupies it. But if all succeeding lots are occupied, he leaves for good. How many sequences {a_1, ..., a_n} are such that every driver can park, as an expression of n?",
+    "skill_annotations": [
+      "champ_013"
+    ],
+    "eval_data": {
+      "answer": "(n+1)^(n-1)"
+    }
+  },
+  {
+    "instance_id": "champ_00004",
+    "dataset": "champ",
+    "question": "Of 3n+1 objects, n are indistinguishable, and the remaining ones are distinct. In how many ways can we choose n objects, as an expression of n?",
+    "skill_annotations": [
+      "champ_016",
+      "champ_012",
+      "champ_041",
+      "champ_037"
+    ],
+    "eval_data": {
+      "answer": "4^n"
+    }
+  },
+  {
+    "instance_id": "champ_00005",
+    "dataset": "champ",
+    "question": "A gardener plants 3 apple trees, 3 peach trees and 2 cherry trees in a row, with a random order. What is the probability that no two apple trees are next two each other?",
+    "skill_annotations": [
+      "champ_016",
+      "champ_030"
+    ],
+    "eval_data": {
+      "answer": "5/14, or approximately 35.7%"
+    }
+  },
+  {
+    "instance_id": "champ_00006",
+    "dataset": "champ",
+    "question": "Find the number of ways to fill a 2 x 21 rectangle with 2 x 1 tiles such that the tiling is same when the rectangle is flipped around the middle column.",
+    "skill_annotations": [
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "89"
+    }
+  },
+  {
+    "instance_id": "champ_00007",
+    "dataset": "champ",
+    "question": "Let A be a string of n binary digits (leading 0s are allowed). How many such strings have the substring \"01\" appearing exactly m times, as an expression of m and n?",
+    "skill_annotations": [
+      "champ_016"
+    ],
+    "eval_data": {
+      "answer": "C(n+1, 2m+1)"
+    }
+  },
+  {
+    "instance_id": "champ_00009",
+    "dataset": "champ",
+    "question": "How many different ordered triples (a, b, c) of non-negative integers are there such that a+b+c=99?",
+    "skill_annotations": [
+      "champ_033",
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "5050"
+    }
+  },
+  {
+    "instance_id": "champ_00010",
+    "dataset": "champ",
+    "question": "Find a closed-form formula of sum_(k=1)^n C(n, k)*k^2.",
+    "skill_annotations": [
+      "champ_016",
+      "champ_013",
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "n(n+1)*2^(n-2)"
+    }
+  },
+  {
+    "instance_id": "champ_00011",
+    "dataset": "champ",
+    "question": "How many strings of length 5 using the digits {0, 1, ..., 9} (with leading zeros allowed) have strictly increasing digits?",
+    "skill_annotations": [
+      "champ_016"
+    ],
+    "eval_data": {
+      "answer": "C(10, 5), or equivalently 252"
+    }
+  },
+  {
+    "instance_id": "champ_00012",
+    "dataset": "champ",
+    "question": "Find the number of ways to fill a 2 x 5 rectangle with 1 x 1 tiles and three-cell L-shaped tiles (i.e., a 2 x 2 tile without a corner).",
+    "skill_annotations": [
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "87"
+    }
+  },
+  {
+    "instance_id": "champ_00013",
+    "dataset": "champ",
+    "question": "Each of the faces of a cube is painted by a different color. How many of the colorings are distinct up to rotations?",
+    "skill_annotations": [
+      "champ_013",
+      "champ_039",
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "30"
+    }
+  },
+  {
+    "instance_id": "champ_00014",
+    "dataset": "champ",
+    "question": "Let 1≤r≤n and consider all subsets of r elements of the set {1, 2, ..., n}. What is the arithmetic mean of the smallest element of these subsets, as an expression of n and r?",
+    "skill_annotations": [
+      "champ_016",
+      "champ_030"
+    ],
+    "eval_data": {
+      "answer": "(n+1)/(r+1)"
+    }
+  },
+  {
+    "instance_id": "champ_00015",
+    "dataset": "champ",
+    "question": "Among all strings of length n consisting of digit 1, 2, 3 and 4, how many of them have an even number of 1s, as an expression of n?",
+    "skill_annotations": [
+      "champ_016",
+      "champ_013",
+      "champ_028"
+    ],
+    "eval_data": {
+      "answer": "(4^n+2^n)/2"
+    }
+  },
+  {
+    "instance_id": "champ_00016",
+    "dataset": "champ",
+    "question": "Is it possible to label the edges of a cube by 1, 2,..., 12 so that, at each vertex, the labels of the edges leaving that vertex have the same sum?",
+    "skill_annotations": [
+      "champ_033"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00017",
+    "dataset": "champ",
+    "question": "On a chess board, two rooks are placed peacefully if they are not on the same row or column. For an n x n chess board, find the number of ways that n rooks can be placed peacefully (i.e., any two are placed peacefully), as an expression of n.",
+    "skill_annotations": [
+      "champ_013"
+    ],
+    "eval_data": {
+      "answer": "n!"
+    }
+  },
+  {
+    "instance_id": "champ_00018",
+    "dataset": "champ",
+    "question": "How many strings of length 6 and consisting solely of the digits 1, 2 and 3 have the property that any two adjacent digits differ by at most 1.",
+    "skill_annotations": [
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "239"
+    }
+  },
+  {
+    "instance_id": "champ_00019",
+    "dataset": "champ",
+    "question": "How many strings of length 5 using the digits {0, 1, ..., 9} (with leading zeros allowed) have strictly increasing or decreasing digits?",
+    "skill_annotations": [
+      "champ_016"
+    ],
+    "eval_data": {
+      "answer": "2*C(10, 5), or equivalently 504"
+    }
+  },
+  {
+    "instance_id": "champ_00020",
+    "dataset": "champ",
+    "question": "Find the number of strings consisting of 5 digits of 1, 2 and 3 where no two 1s are neighbors.",
+    "skill_annotations": [
+      "champ_013",
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "164"
+    }
+  },
+  {
+    "instance_id": "champ_00021",
+    "dataset": "champ",
+    "question": "A diagnoal in a convex polygon is any line connecting two non-adjacent vertices. For a convex polygon of n vertices, we draw all possible diagonals and suppose that no three diagonals pass through the same point. How many such intersection points do we have in the interior of the polygon, as an expression of n?",
+    "skill_annotations": [
+      "champ_016"
+    ],
+    "eval_data": {
+      "answer": "C(n, 4), or an equivalent form such as n(n-1)(n-2)(n-3)/4!"
+    }
+  },
+  {
+    "instance_id": "champ_00022",
+    "dataset": "champ",
+    "question": "On a chess board, two rooks are placed peacefully if they are not on the same row or column. For an n x n chess board, find the number of ways that n rooks can be placed peacefully (i.e., any two are placed peacefully) and the placing is also invariant to a 180-degree rotation.",
+    "skill_annotations": [
+      "champ_013"
+    ],
+    "eval_data": {
+      "answer": "2^floor(n/2)*floor(n/2)!"
+    }
+  },
+  {
+    "instance_id": "champ_00023",
+    "dataset": "champ",
+    "question": "When (x+y+z)^1999 is expanded and like terms are collected (e.g., collecting 2*x^2*y*z^3 and 3*x^2*y*z^3 into a single term of 5*x^2*y*z^3), how many terms will there be?",
+    "skill_annotations": [
+      "champ_033",
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "2001000"
+    }
+  },
+  {
+    "instance_id": "champ_00024",
+    "dataset": "champ",
+    "question": "8 dogs fight over 3 cookies. It is possible that a dog gets more than one cookie or no cookies. However, no two dogs would share the same cookie and there are no cookies left unclaimed. If the cookies are the same but the dogs are different (e.g., dog A, B, C each getting one cookie is one result but dog B, C, D each getting one cookie is a different result), how many possible results are there?",
+    "skill_annotations": [
+      "champ_016",
+      "champ_030",
+      "champ_037"
+    ],
+    "eval_data": {
+      "answer": "120"
+    }
+  },
+  {
+    "instance_id": "champ_00025",
+    "dataset": "champ",
+    "question": "In how many ways can 4 horses go through the finish (with possibility of ties)?",
+    "skill_annotations": [
+      "champ_013",
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "75"
+    }
+  },
+  {
+    "instance_id": "champ_00026",
+    "dataset": "champ",
+    "question": "From the set {1, 2, 3, ..., n+1}, select quadruple (x, y, z, u), with duplicate allowed, such that u>max(x, y, z). In how many ways can this be done?",
+    "skill_annotations": [
+      "champ_013",
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "sum_(i=1)^n i^3, or equivalently (n(n+1)/2)^2"
+    }
+  },
+  {
+    "instance_id": "champ_00027",
+    "dataset": "champ",
+    "question": "Among all sequences of positive integer numbers have sum n, for integer k<n-1, how many times does the number k appear, as an expression of n and k?",
+    "skill_annotations": [
+      "champ_013",
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "(n-k+3)*2^(n-k-2)"
+    }
+  },
+  {
+    "instance_id": "champ_00028",
+    "dataset": "champ",
+    "question": "2n players are participating in a tennis tournament. Find the number of ways that n pairs can be constructed for the first round, as an expression of n.",
+    "skill_annotations": [
+      "champ_013",
+      "champ_039"
+    ],
+    "eval_data": {
+      "answer": "(2n)!/(2^n*n!)"
+    }
+  },
+  {
+    "instance_id": "champ_00029",
+    "dataset": "champ",
+    "question": "n people sit around a circular table. How many of the n! arrangements are distinct (i.e., do not have the same neighboring relations), as an expression of n?",
+    "skill_annotations": [
+      "champ_013",
+      "champ_039"
+    ],
+    "eval_data": {
+      "answer": "n!/(2n)"
+    }
+  },
+  {
+    "instance_id": "champ_00030",
+    "dataset": "champ",
+    "question": "From the set {1, 2, 3, ..., n+1}, select triple (x, y, z), with duplicate allowed, such that z>max(x, y). In how many ways can this be done, as an expression of n?",
+    "skill_annotations": [
+      "champ_013",
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "sum_(i=1)^n i^2, or equivalently n(n+1)(2n+1)/6"
+    }
+  },
+  {
+    "instance_id": "champ_00031",
+    "dataset": "champ",
+    "question": "There are three different toys. We give one toy to each child, selected among four boys and six girls. We want to make sure that at least two boys are selected. In how many ways can this be done?",
+    "skill_annotations": [
+      "champ_016",
+      "champ_013",
+      "champ_012",
+      "champ_030"
+    ],
+    "eval_data": {
+      "answer": "240"
+    }
+  },
+  {
+    "instance_id": "champ_00032",
+    "dataset": "champ",
+    "question": "Find the number of ways to fill a 2 x 7 rectangle with 2 x 1 and 2 x 2 tiles.",
+    "skill_annotations": [
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "85"
+    }
+  },
+  {
+    "instance_id": "champ_00033",
+    "dataset": "champ",
+    "question": "A one-to-one mapping p: {1, 2, ..., n}->{1, 2, ..., n} is called an involution, if p∘p=identity (i.e., p(p(i))=i for all i∈{1, ..., n}). Find the number of involutions on {1, 2, 3, 4, 5, 6}.",
+    "skill_annotations": [
+      "champ_013",
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "76"
+    }
+  },
+  {
+    "instance_id": "champ_00034",
+    "dataset": "champ",
+    "question": "Find the number of ways to fill a 2 x 11 rectangle with 2 x 1 tiles.",
+    "skill_annotations": [
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "144"
+    }
+  },
+  {
+    "instance_id": "champ_00035",
+    "dataset": "champ",
+    "question": "How many subsets of {1, 2,..., 10} have no two successive numbers?",
+    "skill_annotations": [
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "144"
+    }
+  },
+  {
+    "instance_id": "champ_00036",
+    "dataset": "champ",
+    "question": "In how many ways can you take an odd number of objects from n (distinct) objects?",
+    "skill_annotations": [
+      "champ_013"
+    ],
+    "eval_data": {
+      "answer": "2^(n-1)"
+    }
+  },
+  {
+    "instance_id": "champ_00037",
+    "dataset": "champ",
+    "question": "Consider a row of 11 seats. A child sits on each. Each child may move by at most one seat. How many possible rearrangements are there (including the original one)?",
+    "skill_annotations": [
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "144"
+    }
+  },
+  {
+    "instance_id": "champ_00038",
+    "dataset": "champ",
+    "question": "How many strings of length 5 and consisting solely of the digits 1, 2, 3 and 4 have the property that any 1 and 2 are never neighbors (i.e., the string does not contain \"12\" or \"21\" as substrings).",
+    "skill_annotations": [
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "634"
+    }
+  },
+  {
+    "instance_id": "champ_00040",
+    "dataset": "champ",
+    "question": "Let x be a root of the polynomial ax^2+bx+c, with a>0, a+b+c≥0, a-b+c≥0, a-c≥0. What is the range of x, expressed as an interval?",
+    "skill_annotations": [
+      "champ_081"
+    ],
+    "eval_data": {
+      "answer": "[-1, 1]"
+    }
+  },
+  {
+    "instance_id": "champ_00041",
+    "dataset": "champ",
+    "question": "For x, y, z>0, what is the smallest value of x^2/y^2+y^2/z^2+z^2/x^2-(y/x+z/y+x/z)?",
+    "skill_annotations": [
+      "champ_061"
+    ],
+    "eval_data": {
+      "answer": "0"
+    }
+  },
+  {
+    "instance_id": "champ_00042",
+    "dataset": "champ",
+    "question": "If a_i>0 for i=1, 2, ..., n and a_1*a_2*...*a_n=1, what is the smallest value of (1+a_1)(1+a_2)...(1+a_n) as an expression of n?",
+    "skill_annotations": [
+      "champ_063"
+    ],
+    "eval_data": {
+      "answer": "2^n"
+    }
+  },
+  {
+    "instance_id": "champ_00043",
+    "dataset": "champ",
+    "question": "Let (a_1, a_2, ..., a_n) be a permutation of (1, 2, ..., n). What is the smallest value of sum_(k=1)^n a_k/k^2 as an expression of n?",
+    "skill_annotations": [
+      "champ_061"
+    ],
+    "eval_data": {
+      "answer": "sum_(k=1)^n 1/k"
+    }
+  },
+  {
+    "instance_id": "champ_00044",
+    "dataset": "champ",
+    "question": "For real numbers a, b, c satisfying a+b+c=9, what is the smallest value of a^2+b^2+c^2-(ab+bc+ac)-(a+b+c)?",
+    "skill_annotations": [
+      "champ_005",
+      "champ_007"
+    ],
+    "eval_data": {
+      "answer": "-9"
+    }
+  },
+  {
+    "instance_id": "champ_00045",
+    "dataset": "champ",
+    "question": "Let x_1=1 and x_(n+1)=1+n/x_n. For how many values of x_1, ..., x_100 do we have the inequality sqrt(i)≤x_i≤sqrt(i)+1?",
+    "skill_annotations": [
+      "champ_006"
+    ],
+    "eval_data": {
+      "answer": "100 (i.e., all values)"
+    }
+  },
+  {
+    "instance_id": "champ_00046",
+    "dataset": "champ",
+    "question": "Find the minimum value of a^4+b^4+c^4-a^2*bc-b^2*ac-c^2*ab for positive numbers a, b, c.",
+    "skill_annotations": [
+      "champ_015"
+    ],
+    "eval_data": {
+      "answer": "0"
+    }
+  },
+  {
+    "instance_id": "champ_00047",
+    "dataset": "champ",
+    "question": "What is the smallest value of a/(b+c)+b/(a+c)+c/(a+b) for positive numbers a, b, c?",
+    "skill_annotations": [
+      "champ_004"
+    ],
+    "eval_data": {
+      "answer": "3/2"
+    }
+  },
+  {
+    "instance_id": "champ_00049",
+    "dataset": "champ",
+    "question": "For positive a, b, c, what is the largest value of sqrt(ab+bc+ac)/(a+b+c)?",
+    "skill_annotations": [
+      "champ_061"
+    ],
+    "eval_data": {
+      "answer": "sqrt(3)/3, or equivalently 1/sqrt(3)"
+    }
+  },
+  {
+    "instance_id": "champ_00050",
+    "dataset": "champ",
+    "question": "For positive a, b, c, d, at most how many of the three inequalities a+b<c+d, (a+b)(c+d)<ab+cd, (a+b)cd<ab(c+d) can be true at the same time?",
+    "skill_annotations": [
+      "champ_088"
+    ],
+    "eval_data": {
+      "answer": "2 inequalities"
+    }
+  },
+  {
+    "instance_id": "champ_00051",
+    "dataset": "champ",
+    "question": "For positive a, b, what is the smallest value of (a^2+b^2)/(a+b)^2?",
+    "skill_annotations": [
+      "champ_086"
+    ],
+    "eval_data": {
+      "answer": "1/2"
+    }
+  },
+  {
+    "instance_id": "champ_00052",
+    "dataset": "champ",
+    "question": "For real values a, b, c, with a^2+b^2+c^2=1, what is the difference between the largest and smallest possible values of ab+bc+ac?",
+    "skill_annotations": [
+      "champ_005",
+      "champ_007"
+    ],
+    "eval_data": {
+      "answer": "3/2"
+    }
+  },
+  {
+    "instance_id": "champ_00053",
+    "dataset": "champ",
+    "question": "For positive real number a, b and positive integer n, what is the largest value of (a*b^n)^(1/(n+1))/(a+bn) as an expression of n?",
+    "skill_annotations": [
+      "champ_066"
+    ],
+    "eval_data": {
+      "answer": "1/(n+1)"
+    }
+  },
+  {
+    "instance_id": "champ_00054",
+    "dataset": "champ",
+    "question": "Let a, b, c be the lengths of the three sides of a (possibly degenerate) triangle. What is the largest value of (a^2+b^2+c^2)/(ab+bc+ac)?",
+    "skill_annotations": [
+      "champ_084",
+      "champ_005"
+    ],
+    "eval_data": {
+      "answer": "2"
+    }
+  },
+  {
+    "instance_id": "champ_00055",
+    "dataset": "champ",
+    "question": "Let a, b, c>0. What is the minimum value of abc-(a+b-c)(a+c-b)(b+c-a)?",
+    "skill_annotations": [
+      "champ_063"
+    ],
+    "eval_data": {
+      "answer": "0"
+    }
+  },
+  {
+    "instance_id": "champ_00056",
+    "dataset": "champ",
+    "question": "Let a, b>0. What is the smallest value of (a+b)(a^4+b^4)-(a^2+b^2)(a^3+b^3)?",
+    "skill_annotations": [
+      "champ_061"
+    ],
+    "eval_data": {
+      "answer": "0"
+    }
+  },
+  {
+    "instance_id": "champ_00057",
+    "dataset": "champ",
+    "question": "For how many values of n in {1, 2, ..., 100}, do we have (1/2)*(3/4)*(5/6)*...*(2n-1)/(2n)≤1/sqrt(3n+1)?",
+    "skill_annotations": [
+      "champ_005"
+    ],
+    "eval_data": {
+      "answer": "100 (i.e., all values)"
+    }
+  },
+  {
+    "instance_id": "champ_00058",
+    "dataset": "champ",
+    "question": "For real number a, b, what is the largest value of |a+b|/(1+|a+b|)-|a|/(1+|a|)-|b|/(1+|b|)?",
+    "skill_annotations": [
+      "champ_082"
+    ],
+    "eval_data": {
+      "answer": "0"
+    }
+  },
+  {
+    "instance_id": "champ_00059",
+    "dataset": "champ",
+    "question": "What is the smallest value of a^3+b^3+c^3-a^2*b-b^2*c-c^2*a for positive a, b, c?",
+    "skill_annotations": [
+      "champ_061"
+    ],
+    "eval_data": {
+      "answer": "0"
+    }
+  },
+  {
+    "instance_id": "champ_00061",
+    "dataset": "champ",
+    "question": "For positive real a, b and integer m, what is the smallest value of (1+a/b)^m+(1+b/a)^m as an expression of m?",
+    "skill_annotations": [
+      "champ_087",
+      "champ_068"
+    ],
+    "eval_data": {
+      "answer": "2^(m+1)"
+    }
+  },
+  {
+    "instance_id": "champ_00062",
+    "dataset": "champ",
+    "question": "For positive a, b, c, what is the smallest value of (a^3+b^3+c^3)/((a+b+c)(a^2+b^2+c^2))?",
+    "skill_annotations": [
+      "champ_026"
+    ],
+    "eval_data": {
+      "answer": "1/3"
+    }
+  },
+  {
+    "instance_id": "champ_00063",
+    "dataset": "champ",
+    "question": "For positive numbers a_1, ..., a_n, let s=a_1+a_2+...+a_n. What is the smallest value of a_1/(s-a_1)+a_2/(s-a_2)+...+a_n/(s-a_n) as an expression of n?",
+    "skill_annotations": [
+      "champ_061"
+    ],
+    "eval_data": {
+      "answer": "n/(n-1)"
+    }
+  },
+  {
+    "instance_id": "champ_00064",
+    "dataset": "champ",
+    "question": "Let x_i>0, and s=x_1+x_2+···+x_n. What is the smallest value of s/(s-x_1)+s/(s-x_2)+...+s/(s-x_n) in terms of n?",
+    "skill_annotations": [
+      "champ_004"
+    ],
+    "eval_data": {
+      "answer": "n^2/(n-1)"
+    }
+  },
+  {
+    "instance_id": "champ_00066",
+    "dataset": "champ",
+    "question": "If a, b, c are sides of a non-degenerate 90-degree triangle with c being the hypotenuse, then for how many values of n in {1, 2, 3, ..., 100} do we have c^n>a^n+b^n?",
+    "skill_annotations": [
+      "champ_083"
+    ],
+    "eval_data": {
+      "answer": "98 values"
+    }
+  },
+  {
+    "instance_id": "champ_00069",
+    "dataset": "champ",
+    "question": "For non-negative a, b, c, d, what is the smallest value of sqrt((a+c)(b+d))-sqrt(ab)-sqrt(cd)-1?",
+    "skill_annotations": [
+      "champ_005",
+      "champ_063",
+      "champ_064"
+    ],
+    "eval_data": {
+      "answer": "-1"
+    }
+  },
+  {
+    "instance_id": "champ_00070",
+    "dataset": "champ",
+    "question": "For positive a, b, c, what is the smallest value of sqrt(ab+bc+ac)/(abc)^(1/3)?",
+    "skill_annotations": [
+      "champ_066"
+    ],
+    "eval_data": {
+      "answer": "sqrt(3)"
+    }
+  },
+  {
+    "instance_id": "champ_00073",
+    "dataset": "champ",
+    "question": "What's the smallest value of (x^2+2)/sqrt(x^2+1) for real x?",
+    "skill_annotations": [
+      "champ_068"
+    ],
+    "eval_data": {
+      "answer": "2"
+    }
+  },
+  {
+    "instance_id": "champ_00074",
+    "dataset": "champ",
+    "question": "For positive a, b, c, at most how many of the three inequalities a(1-b)>1/4, b(1-c)>1/4, c(1-a)>1/4 can be true at the same time?",
+    "skill_annotations": [
+      "champ_007"
+    ],
+    "eval_data": {
+      "answer": "2 inequalities"
+    }
+  },
+  {
+    "instance_id": "champ_00075",
+    "dataset": "champ",
+    "question": "Let a_i≥1 for all i. What is the minimum value of (1+a_1)(1+a_2)...(1+a_n)/(1+a_1+a_2+...+a_n) as an expression of n?",
+    "skill_annotations": [
+      "champ_009"
+    ],
+    "eval_data": {
+      "answer": "2^n/(n+1)"
+    }
+  },
+  {
+    "instance_id": "champ_00077",
+    "dataset": "champ",
+    "question": "Let a, b, c>0. What is the largest value of ((a+b+c)/(abc))/(1/a^2+1/b^2+1/c^2)?",
+    "skill_annotations": [
+      "champ_061"
+    ],
+    "eval_data": {
+      "answer": "1"
+    }
+  },
+  {
+    "instance_id": "champ_00079",
+    "dataset": "champ",
+    "question": "For a, b, c>0, are there possible values of them to make (a^3*b+b^3*c+c^3*a)/(a+b+c) less than abc?",
+    "skill_annotations": [
+      "champ_001"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00080",
+    "dataset": "champ",
+    "question": "For x_1, x_2, ..., x_n≥0, with x_1+x_2+...+x_n=1, what is the minimum value of x_1^2+x_2^2+...+x_n^2, as an expression of n?",
+    "skill_annotations": [
+      "champ_001"
+    ],
+    "eval_data": {
+      "answer": "1/n"
+    }
+  },
+  {
+    "instance_id": "champ_00081",
+    "dataset": "champ",
+    "question": "For positive numbers a, b, c, what is the smallest value of (a+b)(b+c)(a+c)/(abc)?",
+    "skill_annotations": [
+      "champ_063"
+    ],
+    "eval_data": {
+      "answer": "8"
+    }
+  },
+  {
+    "instance_id": "champ_00082",
+    "dataset": "champ",
+    "question": "For how many values of n in {1, 2, ..., 100} do we have (n+1)^n≥2^n*n!?",
+    "skill_annotations": [
+      "champ_009"
+    ],
+    "eval_data": {
+      "answer": "100 (i.e., all values)"
+    }
+  },
+  {
+    "instance_id": "champ_00083",
+    "dataset": "champ",
+    "question": "What is the smallest value of |x+y-z|+|x-y+z|+|-x+y+z|-|x|-|y|-|z|?",
+    "skill_annotations": [
+      "champ_082"
+    ],
+    "eval_data": {
+      "answer": "0"
+    }
+  },
+  {
+    "instance_id": "champ_00084",
+    "dataset": "champ",
+    "question": "Find the minimum value of sin(x)^3/cos(x)+cos(x)^3/sin(x) for 0<x<π/2.",
+    "skill_annotations": [
+      "champ_061"
+    ],
+    "eval_data": {
+      "answer": "1"
+    }
+  },
+  {
+    "instance_id": "champ_00085",
+    "dataset": "champ",
+    "question": "Let a, b, c>0. What is the minimum value of a^3+b^3+c^3-(a^2*b+b^2*c+c^2*a)?",
+    "skill_annotations": [
+      "champ_061"
+    ],
+    "eval_data": {
+      "answer": "0"
+    }
+  },
+  {
+    "instance_id": "champ_00086",
+    "dataset": "champ",
+    "question": "Let A=(1/2)*(3/4)*(5/6)*...*(99/100). Is A greater than 0.1?",
+    "skill_annotations": [
+      "champ_064"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00087",
+    "dataset": "champ",
+    "question": "If a, b, c are side lengths of a (possibly degenerate) triangle, then what is the largest value of a/(b+c)+b/(a+c)+c/(a+b)?",
+    "skill_annotations": [
+      "champ_085"
+    ],
+    "eval_data": {
+      "answer": "2"
+    }
+  },
+  {
+    "instance_id": "champ_00088",
+    "dataset": "champ",
+    "question": "For positive numbers x_1, ..., x_n, what is the smallest value of x_1^(n+1)+x_2^(n+1)+...+x_n^(n+1)-x_1*x_2*...*x_n*(x_1+x_2+...+x_n)?",
+    "skill_annotations": [
+      "champ_015"
+    ],
+    "eval_data": {
+      "answer": "0"
+    }
+  },
+  {
+    "instance_id": "champ_00090",
+    "dataset": "champ",
+    "question": "Are there integer solutions to the equation (x^2-1)(y^2-1)+1985=z^2?",
+    "skill_annotations": [
+      "champ_052",
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00091",
+    "dataset": "champ",
+    "question": "Let (x, y, z) be an integer-valued solution to the equation x^2+y^2=z^2. At least how many of the three numbers must be divisible by 5?",
+    "skill_annotations": [
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "At least 1 number"
+    }
+  },
+  {
+    "instance_id": "champ_00092",
+    "dataset": "champ",
+    "question": "Which is the smallest positive integer that becomes 57 times smaller when its first digit is removed?",
+    "skill_annotations": [
+      "champ_034",
+      "champ_038",
+      "champ_024"
+    ],
+    "eval_data": {
+      "answer": "7125"
+    }
+  },
+  {
+    "instance_id": "champ_00093",
+    "dataset": "champ",
+    "question": "An integer a is called automorphic if a^2 ends in a. For example, 5 is automorphic because 5^2=25 ends in 5. 25 is also automorphic because 25^2=625 ends in 25. Find all two-digit automorphic numbers besides 25.",
+    "skill_annotations": [
+      "champ_021"
+    ],
+    "eval_data": {
+      "answer": "76"
+    }
+  },
+  {
+    "instance_id": "champ_00094",
+    "dataset": "champ",
+    "question": "What is the smallest value of |36^m-5^n| for positive integers m and n?",
+    "skill_annotations": [
+      "champ_006",
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "11"
+    }
+  },
+  {
+    "instance_id": "champ_00095",
+    "dataset": "champ",
+    "question": "Is 4^545+545^4 a prime number?",
+    "skill_annotations": [
+      "champ_031"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00096",
+    "dataset": "champ",
+    "question": "Can there exist a polynomial f(x) of integer coefficients with f(7)=11 and f(11)=13?",
+    "skill_annotations": [
+      "champ_035",
+      "champ_022"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00097",
+    "dataset": "champ",
+    "question": "Can n+2 be a factor of 1^1987+2^1987+...+n^1987 for some n?",
+    "skill_annotations": [
+      "champ_025",
+      "champ_022"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00098",
+    "dataset": "champ",
+    "question": "Find a perfect square number that can be written as aabb (i.e., first two digits are the same, and last two digits are the same).",
+    "skill_annotations": [
+      "champ_022"
+    ],
+    "eval_data": {
+      "answer": "7744"
+    }
+  },
+  {
+    "instance_id": "champ_00099",
+    "dataset": "champ",
+    "question": "Find all integer solutions to the equation x^2-3y^2=17.",
+    "skill_annotations": [
+      "champ_032",
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "No integer solutions"
+    }
+  },
+  {
+    "instance_id": "champ_00100",
+    "dataset": "champ",
+    "question": "Find all possible values of n^5-5*n^3+4n mod 120 for integer n.",
+    "skill_annotations": [
+      "champ_006",
+      "champ_029"
+    ],
+    "eval_data": {
+      "answer": "0 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00101",
+    "dataset": "champ",
+    "question": "Do there exist positive integers x, y such that x+y, x+2y and 2x+y are both squares?",
+    "skill_annotations": [
+      "champ_032",
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00102",
+    "dataset": "champ",
+    "question": "For positive integers a, b, c, d, e satisfying a^5+b^5+c^5+d^5+e^5 mod 25=0, what are possible values of abcde mod 5?",
+    "skill_annotations": [
+      "champ_028",
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "0 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00103",
+    "dataset": "champ",
+    "question": "Find all integer solutions to the equation 19x^3-84y^2=1984.",
+    "skill_annotations": [
+      "champ_024",
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "No integer solutions"
+    }
+  },
+  {
+    "instance_id": "champ_00104",
+    "dataset": "champ",
+    "question": "Find 3^105+4^105 mod 7.",
+    "skill_annotations": [
+      "champ_025"
+    ],
+    "eval_data": {
+      "answer": "0"
+    }
+  },
+  {
+    "instance_id": "champ_00105",
+    "dataset": "champ",
+    "question": "Find all positive integer solutions to the equation x^3+3=4y(y+1).",
+    "skill_annotations": [
+      "champ_005",
+      "champ_006",
+      "champ_048",
+      "champ_002",
+      "champ_046"
+    ],
+    "eval_data": {
+      "answer": "No positive integer solutions"
+    }
+  },
+  {
+    "instance_id": "champ_00106",
+    "dataset": "champ",
+    "question": "Find 2^32+1 mod 641.",
+    "skill_annotations": [
+      "champ_022",
+      "champ_035"
+    ],
+    "eval_data": {
+      "answer": "0"
+    }
+  },
+  {
+    "instance_id": "champ_00108",
+    "dataset": "champ",
+    "question": "Let (x, y, z) be an integer-valued solution to the equation x^2+y^2=z^2. At least how many of the three numbers must be divisible by 3?",
+    "skill_annotations": [
+      "champ_032",
+      "champ_036"
+    ],
+    "eval_data": {
+      "answer": "At least 1 number"
+    }
+  },
+  {
+    "instance_id": "champ_00109",
+    "dataset": "champ",
+    "question": "Let n be 22...22, with a total of 1980 digits. What is n mod 1982?",
+    "skill_annotations": [
+      "champ_006",
+      "champ_043",
+      "champ_038"
+    ],
+    "eval_data": {
+      "answer": "0"
+    }
+  },
+  {
+    "instance_id": "champ_00111",
+    "dataset": "champ",
+    "question": "Find all possible positive integer values of x such that x, 2x+1 and 4x+1 are all prime numbers.",
+    "skill_annotations": [
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "3 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00112",
+    "dataset": "champ",
+    "question": "An integer a is called automorphic if a^2 ends in a. For example, 5 is automorphic because 5^2=25 ends in 5. 25 is also automorphic because 25^2=625 ends in 25. Find all three-digit automorphic numbers.",
+    "skill_annotations": [
+      "champ_021"
+    ],
+    "eval_data": {
+      "answer": "376 and 625"
+    }
+  },
+  {
+    "instance_id": "champ_00113",
+    "dataset": "champ",
+    "question": "Find all integer solutions to the equation 15x^2-7y^2=9.",
+    "skill_annotations": [
+      "champ_010",
+      "champ_032"
+    ],
+    "eval_data": {
+      "answer": "No integer solutions"
+    }
+  },
+  {
+    "instance_id": "champ_00114",
+    "dataset": "champ",
+    "question": "Find all positive integer solutions to the equation 2^x-1=3^y.",
+    "skill_annotations": [
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "x=2, y=1"
+    }
+  },
+  {
+    "instance_id": "champ_00115",
+    "dataset": "champ",
+    "question": "Find 3^105+4^105 mod 11.",
+    "skill_annotations": [
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "2"
+    }
+  },
+  {
+    "instance_id": "champ_00116",
+    "dataset": "champ",
+    "question": "Find the smallest positive integer a, so that 1971 | 50^n+23^n*a for odd n.",
+    "skill_annotations": [
+      "champ_034",
+      "champ_010",
+      "champ_000"
+    ],
+    "eval_data": {
+      "answer": "512"
+    }
+  },
+  {
+    "instance_id": "champ_00119",
+    "dataset": "champ",
+    "question": "Find all possible values of x^2 mod 30 for prime number x>30.",
+    "skill_annotations": [
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "1 and 19"
+    }
+  },
+  {
+    "instance_id": "champ_00120",
+    "dataset": "champ",
+    "question": "Find 3^105+4^105 mod 13.",
+    "skill_annotations": [
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "0"
+    }
+  },
+  {
+    "instance_id": "champ_00121",
+    "dataset": "champ",
+    "question": "For integers a, b, c, d, if a-c divides ab+cd, does it also divide ad+bc?",
+    "skill_annotations": [
+      "champ_022"
+    ],
+    "eval_data": {
+      "answer": "Yes"
+    }
+  },
+  {
+    "instance_id": "champ_00122",
+    "dataset": "champ",
+    "question": "Find all non-negative integer solutions to the equation x^3+8x^2-6x+8=y^3.",
+    "skill_annotations": [
+      "champ_044",
+      "champ_080"
+    ],
+    "eval_data": {
+      "answer": "x=0, y=2 and x=9, y=11"
+    }
+  },
+  {
+    "instance_id": "champ_00123",
+    "dataset": "champ",
+    "question": "Find all positive integer solutions to the equation x^3-y^3=xy+61.",
+    "skill_annotations": [
+      "champ_044"
+    ],
+    "eval_data": {
+      "answer": "x=6, y=5"
+    }
+  },
+  {
+    "instance_id": "champ_00124",
+    "dataset": "champ",
+    "question": "If n=x^2+y^2 for integers x and y, is 2n always a sum of two perfect squares?",
+    "skill_annotations": [
+      "champ_005"
+    ],
+    "eval_data": {
+      "answer": "Yes"
+    }
+  },
+  {
+    "instance_id": "champ_00127",
+    "dataset": "champ",
+    "question": "Starting from a number x_1, form a sequence x_2, x_3, x_4... by appending one digit from 0 to 8 (i.e., 9 is not allowed) to the previous number. Can there be finitely many composite numbers in this sequence?",
+    "skill_annotations": [
+      "champ_050",
+      "champ_043",
+      "champ_024"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00129",
+    "dataset": "champ",
+    "question": "Let x be 1000...0001, with a total of 1961 zeros in the middle. Is x a prime number?",
+    "skill_annotations": [
+      "champ_050",
+      "champ_025"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00130",
+    "dataset": "champ",
+    "question": "For positive integer n for which 2n+1 and 3n+1 are both perfect squares, what are possible values of n mod 40?",
+    "skill_annotations": [
+      "champ_077",
+      "champ_010",
+      "champ_024",
+      "champ_008"
+    ],
+    "eval_data": {
+      "answer": "0 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00131",
+    "dataset": "champ",
+    "question": "Find all integer values of m such that 1000^m-1 is a factor of 1978^m-1.",
+    "skill_annotations": [
+      "champ_024",
+      "champ_022"
+    ],
+    "eval_data": {
+      "answer": "No such values"
+    }
+  },
+  {
+    "instance_id": "champ_00132",
+    "dataset": "champ",
+    "question": "Is (5^125-1)/(5^25-1) a prime number?",
+    "skill_annotations": [
+      "champ_073",
+      "champ_006"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00133",
+    "dataset": "champ",
+    "question": "For three integer numbers a, b, c, if their sum a+b+c is divisible by 6, is their cubed sum a^3+b^3+c^3 always divisble by 6?",
+    "skill_annotations": [
+      "champ_010",
+      "champ_008",
+      "champ_022"
+    ],
+    "eval_data": {
+      "answer": "Yes"
+    }
+  },
+  {
+    "instance_id": "champ_00134",
+    "dataset": "champ",
+    "question": "An integer a is called automorphic if a^2 ends in a. For example, 5 is automorphic because 5^2=25 ends in 5. 25 is also automorphic because 25^2=625 ends in 25. Find all four-digit automorphic numbers.",
+    "skill_annotations": [
+      "champ_021"
+    ],
+    "eval_data": {
+      "answer": "9376"
+    }
+  },
+  {
+    "instance_id": "champ_00135",
+    "dataset": "champ",
+    "question": "Find the five-digit number abcde such that 4*abcde=edcba.",
+    "skill_annotations": [
+      "champ_078"
+    ],
+    "eval_data": {
+      "answer": "21978"
+    }
+  },
+  {
+    "instance_id": "champ_00136",
+    "dataset": "champ",
+    "question": "Find the smallest positive integer with the property that, if you move the first digit to the end, the new number is exactly 1.5 times as large as the old one.",
+    "skill_annotations": [
+      "champ_038",
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "(20*10^15-2)/17, or equivalently 1176470588235294"
+    }
+  },
+  {
+    "instance_id": "champ_00137",
+    "dataset": "champ",
+    "question": "Let Q(n) be the digit sum of n. If Q(n)=Q(2n), what are possible values of n mod 9?",
+    "skill_annotations": [
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "0 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00138",
+    "dataset": "champ",
+    "question": "Find all possible values of p^2 mod 24 for prime number p.",
+    "skill_annotations": [
+      "champ_075",
+      "champ_005",
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "1, 4 and 9"
+    }
+  },
+  {
+    "instance_id": "champ_00139",
+    "dataset": "champ",
+    "question": "How many pairs of positive odd integer (a, b) both under 100 make a^2+b^2 be a perfect square?",
+    "skill_annotations": [
+      "champ_010",
+      "champ_047"
+    ],
+    "eval_data": {
+      "answer": "0 pairs"
+    }
+  },
+  {
+    "instance_id": "champ_00140",
+    "dataset": "champ",
+    "question": "Let (x, y, z) be an integer solution to the equation x^2+y^2=z^2. At least how many of the three numbers must be divisible by 4?",
+    "skill_annotations": [
+      "champ_005",
+      "champ_010",
+      "champ_077"
+    ],
+    "eval_data": {
+      "answer": "At least 1 number"
+    }
+  },
+  {
+    "instance_id": "champ_00141",
+    "dataset": "champ",
+    "question": "Positive integers a, b satisfy that (a+1)/b+(b+1)/a is also a positive integer. Let d=gcd(a, b). What are possible values of a+b mod d^2?",
+    "skill_annotations": [
+      "champ_029",
+      "champ_011",
+      "champ_022"
+    ],
+    "eval_data": {
+      "answer": "0 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00142",
+    "dataset": "champ",
+    "question": "Find all possible values of 4^n+15n-1 mod 9 for interger n≥0.",
+    "skill_annotations": [
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "0 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00143",
+    "dataset": "champ",
+    "question": "Find all possible values of 2(1^k+2^k+...+n^k) mod n(n+1) for odd k.",
+    "skill_annotations": [
+      "champ_025",
+      "champ_022",
+      "champ_040"
+    ],
+    "eval_data": {
+      "answer": "0 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00146",
+    "dataset": "champ",
+    "question": "Find all possible integer values of x such that x and 8x^2+1 are both prime numbers.",
+    "skill_annotations": [
+      "champ_006"
+    ],
+    "eval_data": {
+      "answer": "3 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00148",
+    "dataset": "champ",
+    "question": "Find all prime number values of n>2 such that 1+2+...+(n-2)+(n-1) is a factor of 1*2*...*(n-2)*(n-1).",
+    "skill_annotations": [
+      "champ_033",
+      "champ_038"
+    ],
+    "eval_data": {
+      "answer": "No such values"
+    }
+  },
+  {
+    "instance_id": "champ_00149",
+    "dataset": "champ",
+    "question": "Is 385^1980+18^1980 a perfect square?",
+    "skill_annotations": [
+      "champ_078",
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00150",
+    "dataset": "champ",
+    "question": "Find all positive integer solutions to the equation m^2+(m+1)^2=n^4+(n+1)^4.",
+    "skill_annotations": [
+      "champ_005",
+      "champ_028"
+    ],
+    "eval_data": {
+      "answer": "No positive integer solutions"
+    }
+  },
+  {
+    "instance_id": "champ_00151",
+    "dataset": "champ",
+    "question": "Find all prime number solutions to the equation p^2-2*q^2=1.",
+    "skill_annotations": [
+      "champ_075",
+      "champ_005",
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "p=3, q=2 and p=5, q=3"
+    }
+  },
+  {
+    "instance_id": "champ_00152",
+    "dataset": "champ",
+    "question": "If n is a composite number, find all possible values of 1*2*...*(n-2)*(n-1) mod 1+2+...+(n-2)+(n-1).",
+    "skill_annotations": [
+      "champ_033",
+      "champ_048"
+    ],
+    "eval_data": {
+      "answer": "0 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00153",
+    "dataset": "champ",
+    "question": "For how many integers n in {1, 2, ..., 99} is n^4+4^n a prime number?",
+    "skill_annotations": [
+      "champ_031"
+    ],
+    "eval_data": {
+      "answer": "1"
+    }
+  },
+  {
+    "instance_id": "champ_00154",
+    "dataset": "champ",
+    "question": "Find all integer solutions to the equation (n-2)^2+(n-1)^2+n^2+(n+1)^2+(n+2)^2=m^2.",
+    "skill_annotations": [
+      "champ_005",
+      "champ_049"
+    ],
+    "eval_data": {
+      "answer": "No integer solutions"
+    }
+  },
+  {
+    "instance_id": "champ_00156",
+    "dataset": "champ",
+    "question": "Find all integer solutions to the equation x(x+1)=y^z for x>0, y>0, z>1.",
+    "skill_annotations": [
+      "champ_048",
+      "champ_002",
+      "champ_079"
+    ],
+    "eval_data": {
+      "answer": "No integer solutions"
+    }
+  },
+  {
+    "instance_id": "champ_00157",
+    "dataset": "champ",
+    "question": "Find all positive integer solutions to the equation 2^x+1=3^y.",
+    "skill_annotations": [
+      "champ_073",
+      "champ_006"
+    ],
+    "eval_data": {
+      "answer": "x=1, y=1 and x=3, y=2"
+    }
+  },
+  {
+    "instance_id": "champ_00158",
+    "dataset": "champ",
+    "question": "What is the smallest value of |12^m-5^n| for positive integers m and n?",
+    "skill_annotations": [
+      "champ_000",
+      "champ_006",
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "7"
+    }
+  },
+  {
+    "instance_id": "champ_00159",
+    "dataset": "champ",
+    "question": "If positive integers x and y are such that x^2+2y^2 is a prime number, what are all possible values of x^2+2y^2 mod 8?",
+    "skill_annotations": [
+      "champ_077",
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "1 and 3"
+    }
+  },
+  {
+    "instance_id": "champ_00160",
+    "dataset": "champ",
+    "question": "What are possible values of 20^n+16^n-3^n-1 mod 323 for even n?",
+    "skill_annotations": [
+      "champ_035",
+      "champ_022",
+      "champ_008"
+    ],
+    "eval_data": {
+      "answer": "0 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00161",
+    "dataset": "champ",
+    "question": "Find all possible positive integer values of x such that x, x+10 and x+14 are all prime numbers.",
+    "skill_annotations": [
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "3 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00162",
+    "dataset": "champ",
+    "question": "Are there integer solutions to the equation (x^2-1)(y^2-1)+1981=z^2?",
+    "skill_annotations": [
+      "champ_051",
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00163",
+    "dataset": "champ",
+    "question": "Find the four-digit number abcd such that 4*abcd=dcba.",
+    "skill_annotations": [
+      "champ_078"
+    ],
+    "eval_data": {
+      "answer": "2178"
+    }
+  },
+  {
+    "instance_id": "champ_00164",
+    "dataset": "champ",
+    "question": "If the integer m ends with digit 5, what are possible values of 12^m+9^m+8^m+6^m mod 1991?",
+    "skill_annotations": [
+      "champ_025",
+      "champ_029",
+      "champ_011"
+    ],
+    "eval_data": {
+      "answer": "0 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00165",
+    "dataset": "champ",
+    "question": "Find all possible values of p^2-q^2 mod 24 for prime numbers p and q greater than 3.",
+    "skill_annotations": [
+      "champ_075",
+      "champ_006",
+      "champ_029",
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "0 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00167",
+    "dataset": "champ",
+    "question": "Find all possible solutions to the equation (n-1)n(n+1)=a^m for integer n, a>0 and m>1.",
+    "skill_annotations": [
+      "champ_042",
+      "champ_002",
+      "champ_006",
+      "champ_079"
+    ],
+    "eval_data": {
+      "answer": "No possible solutions"
+    }
+  },
+  {
+    "instance_id": "champ_00168",
+    "dataset": "champ",
+    "question": "Can the digit sum of a perfect square be 1977?",
+    "skill_annotations": [
+      "champ_050",
+      "champ_045"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00169",
+    "dataset": "champ",
+    "question": "Find all positive integer solutions to the equation x^2+y^2+z^2=2xyz.",
+    "skill_annotations": [
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "No positive integer solutions"
+    }
+  },
+  {
+    "instance_id": "champ_00170",
+    "dataset": "champ",
+    "question": "What is the remainder of nx^(n+1)−(n+1)x^n+1 divided by (x−1)^2?",
+    "skill_annotations": [
+      "champ_062"
+    ],
+    "eval_data": {
+      "answer": "0"
+    }
+  },
+  {
+    "instance_id": "champ_00171",
+    "dataset": "champ",
+    "question": "For an antisymmetric polynomial f(x, y) (i.e., f(x, y)=-f(y, x)) of total degree n (i.e., the maximum value of i+j in x^i*y^j is n), what are possible values of the remainder of f(x, y) divided by x-y?",
+    "skill_annotations": [
+      "champ_067",
+      "champ_022"
+    ],
+    "eval_data": {
+      "answer": "0 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00172",
+    "dataset": "champ",
+    "question": "If x_1, x_2 are the two roots of the polynomial x^2-6x+1, for how many integer n in {61, 62, ..., 120} does x_1^n+x_2^n divided by 5 give a remainder of 4?",
+    "skill_annotations": [
+      "champ_081",
+      "champ_053",
+      "champ_010"
+    ],
+    "eval_data": {
+      "answer": "20"
+    }
+  },
+  {
+    "instance_id": "champ_00173",
+    "dataset": "champ",
+    "question": "How many (real or complex) roots have multiplicity greater than 1 for the polynomial f(x)=1+x/(1!)+x^2/(2!)+x^3/(3!)+...++x^n/(n!)?",
+    "skill_annotations": [
+      "champ_058"
+    ],
+    "eval_data": {
+      "answer": "0 roots"
+    }
+  },
+  {
+    "instance_id": "champ_00174",
+    "dataset": "champ",
+    "question": "Find the value of a, b such that (x-1)^2 | ax^4+bx^3+1.",
+    "skill_annotations": [
+      "champ_062"
+    ],
+    "eval_data": {
+      "answer": "a=3, b=-4"
+    }
+  },
+  {
+    "instance_id": "champ_00175",
+    "dataset": "champ",
+    "question": "Factorize x^4+x^2+1 into terms of integer coefficients.",
+    "skill_annotations": [
+      "champ_005",
+      "champ_006"
+    ],
+    "eval_data": {
+      "answer": "(x^2+x+1)(x^2-x+1)"
+    }
+  },
+  {
+    "instance_id": "champ_00177",
+    "dataset": "champ",
+    "question": "The polynomial f(x) has integer coefficients and there exists an integer k such that f(k), f(k+1), f(k+2) are all divisible by 3. For integer m in {k+3, k+4, ..., 2k}, at least how many of them have f(m) divisible by 3, as an expression of k?",
+    "skill_annotations": [
+      "champ_035",
+      "champ_011",
+      "champ_022"
+    ],
+    "eval_data": {
+      "answer": "k-2 (i.e., all of them)"
+    }
+  },
+  {
+    "instance_id": "champ_00178",
+    "dataset": "champ",
+    "question": "Let f(x) be a polynomial of degree n and f(x)=x has no real number solutions. What is the maximum number of real number solutions does f(f(x))=x have?",
+    "skill_annotations": [
+      "champ_076"
+    ],
+    "eval_data": {
+      "answer": "0"
+    }
+  },
+  {
+    "instance_id": "champ_00179",
+    "dataset": "champ",
+    "question": "Factorize x^8+x^4+1 into terms of integer coefficients.",
+    "skill_annotations": [
+      "champ_005",
+      "champ_006"
+    ],
+    "eval_data": {
+      "answer": "(x^2+x+1)(x^2-x+1)(x^4-x^2+1)"
+    }
+  },
+  {
+    "instance_id": "champ_00180",
+    "dataset": "champ",
+    "question": "Factorize x^3+y^3+z^3-3xyz.",
+    "skill_annotations": [
+      "champ_023"
+    ],
+    "eval_data": {
+      "answer": "(x+y+z)(x^2+y^2+z^2-xy-yz-xz)"
+    }
+  },
+  {
+    "instance_id": "champ_00181",
+    "dataset": "champ",
+    "question": "Solve the equation x^4+a^4-3a*x^3+3a^3*x=0 for a≠0 as an expression of a.",
+    "skill_annotations": [
+      "champ_005"
+    ],
+    "eval_data": {
+      "answer": "a(1±sqrt(2)), a(1±sqrt(5))/2"
+    }
+  },
+  {
+    "instance_id": "champ_00182",
+    "dataset": "champ",
+    "question": "Find a polynomial f(x) such that x*f(x−1)=(x+1)*f(x) for all x?",
+    "skill_annotations": [
+      "champ_019"
+    ],
+    "eval_data": {
+      "answer": "f(x)=0"
+    }
+  },
+  {
+    "instance_id": "champ_00184",
+    "dataset": "champ",
+    "question": "Find all real-valued solutions to the equation x^8+4x^6−10x^4+4x^2+1=0.",
+    "skill_annotations": [
+      "champ_072",
+      "champ_028"
+    ],
+    "eval_data": {
+      "answer": "x=±1"
+    }
+  },
+  {
+    "instance_id": "champ_00185",
+    "dataset": "champ",
+    "question": "Finding the remainder when p(x^7) is divided by p(x), where p(x)=x^6+x^5+...+x+1?",
+    "skill_annotations": [
+      "champ_065",
+      "champ_067",
+      "champ_022",
+      "champ_011"
+    ],
+    "eval_data": {
+      "answer": "7"
+    }
+  },
+  {
+    "instance_id": "champ_00186",
+    "dataset": "champ",
+    "question": "Find the smallest value of the polynomial f(x)=x^3(x^3+1)(x^3+2)(x^3+3).",
+    "skill_annotations": [
+      "champ_005",
+      "champ_007"
+    ],
+    "eval_data": {
+      "answer": "-1"
+    }
+  },
+  {
+    "instance_id": "champ_00187",
+    "dataset": "champ",
+    "question": "For how many values of n in {2, 3, 4, ..., 1993} can f(x)=x^n+5x^(n−1)+3 be written as g(x)h(x) where g(x) and h(x) are both polynomials of integer coefficients with degree at least 1?",
+    "skill_annotations": [
+      "champ_022"
+    ],
+    "eval_data": {
+      "answer": "0"
+    }
+  },
+  {
+    "instance_id": "champ_00188",
+    "dataset": "champ",
+    "question": "For what value(s) of k is x^3+y^3+z^3+kxyz divisible by x+y+z?",
+    "skill_annotations": [
+      "champ_062",
+      "champ_044",
+      "champ_046"
+    ],
+    "eval_data": {
+      "answer": "-3 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00189",
+    "dataset": "champ",
+    "question": "Let f(x) be a polynomial with integer coefficients, with f(x)=5 at four distinct integers x=a, b, c, d. If f(x) has degree n, then at most how many integer values k are there with f(k)=8?",
+    "skill_annotations": [
+      "champ_055"
+    ],
+    "eval_data": {
+      "answer": "At most 0 values (i.e., no such values)"
+    }
+  },
+  {
+    "instance_id": "champ_00190",
+    "dataset": "champ",
+    "question": "Let P(x) be a polynomial of degree n such that P(k)=k/(k+1) for k=0, 1, ..., n. Find P(n+1).",
+    "skill_annotations": [
+      "champ_070"
+    ],
+    "eval_data": {
+      "answer": "((-1)^(n+1)+n+1)/(n+2) (i.e., 1 if for odd n, and n/(n+2) for even n)"
+    }
+  },
+  {
+    "instance_id": "champ_00191",
+    "dataset": "champ",
+    "question": "Factorize x^9+x^4-x-1 into terms of integer coefficients.",
+    "skill_annotations": [
+      "champ_006",
+      "champ_046"
+    ],
+    "eval_data": {
+      "answer": "(x+1)(x-1)(x^2+1)(x^3−x^2+1)(x^2+x+1)"
+    }
+  },
+  {
+    "instance_id": "champ_00192",
+    "dataset": "champ",
+    "question": "For a polynomial f(x) of degree n with integer coefficients, if both f(0) and f(1) are odd, at most how many integer-valued zeros can it have?",
+    "skill_annotations": [
+      "champ_055"
+    ],
+    "eval_data": {
+      "answer": "At most 0 integer-valued zeros (i.e., no integer zeros)"
+    }
+  },
+  {
+    "instance_id": "champ_00193",
+    "dataset": "champ",
+    "question": "What are possible values of n mod k if x^n-y^n is divisible by x^k-y^k for integer n, k?",
+    "skill_annotations": [
+      "champ_067",
+      "champ_022"
+    ],
+    "eval_data": {
+      "answer": "0 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00194",
+    "dataset": "champ",
+    "question": "Suppose that for x, y we have x+y=a and x^3+y^3=b. Find x^2+y^2, as an expression of a and b.",
+    "skill_annotations": [
+      "champ_053"
+    ],
+    "eval_data": {
+      "answer": "(a^3+2b)/(3a)"
+    }
+  },
+  {
+    "instance_id": "champ_00195",
+    "dataset": "champ",
+    "question": "Let f(x)=x^4+x^3+x^2+x+1. Find the remainder of f(x^5) divided by f(x).",
+    "skill_annotations": [
+      "champ_067",
+      "champ_073",
+      "champ_011",
+      "champ_022"
+    ],
+    "eval_data": {
+      "answer": "5"
+    }
+  },
+  {
+    "instance_id": "champ_00196",
+    "dataset": "champ",
+    "question": "The polynomial p(x)=ax^4+bx^3+cx^2+dx+e with integer coefficients is divisible by 7 for every integer x. What are possible values of (a mod 7) + (b mod 7) + (c mod 7) + (d mod 7) + (e mod 7)?",
+    "skill_annotations": [
+      "champ_022",
+      "champ_024"
+    ],
+    "eval_data": {
+      "answer": "0 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00197",
+    "dataset": "champ",
+    "question": "Let f(x)=(1-x+x^2-x^3+...-x^99+x^100)(1+x+x^2+x^3+...+x^99+x^100). What is the sum of coefficients of the terms x^1, x^3, ..., x^97, x^99 in the expansion form of f(x)?",
+    "skill_annotations": [
+      "champ_014",
+      "champ_017"
+    ],
+    "eval_data": {
+      "answer": "0"
+    }
+  },
+  {
+    "instance_id": "champ_00198",
+    "dataset": "champ",
+    "question": "Let f(x)=(x^1958+x^1957+2)^1959=a_0+a_1*x+···+a_n*x^n. Find a_0−a_1/2−a_2/2+a_3−a_4/2−a_5/2+a_6-a_7/2-a_8/2+....",
+    "skill_annotations": [
+      "champ_057"
+    ],
+    "eval_data": {
+      "answer": "1"
+    }
+  },
+  {
+    "instance_id": "champ_00199",
+    "dataset": "champ",
+    "question": "For the polynomial x^3+4x^2+2x+a, what value of a results in one root being equal to the sum of the other two roots?",
+    "skill_annotations": [
+      "champ_056"
+    ],
+    "eval_data": {
+      "answer": "-4"
+    }
+  },
+  {
+    "instance_id": "champ_00200",
+    "dataset": "champ",
+    "question": "Find all integer solutions to the equation x^(1/4)+(97-x)^(1/4)=5.",
+    "skill_annotations": [
+      "champ_053"
+    ],
+    "eval_data": {
+      "answer": "x=16 and x=81"
+    }
+  },
+  {
+    "instance_id": "champ_00201",
+    "dataset": "champ",
+    "question": "Find all real-valued solutions to the equation 4x^11+4x^10−21x^9-21x^8+17x^7+17x^6+17x^5+17x^4−21x^3-21x^2+4x+4=0.",
+    "skill_annotations": [
+      "champ_074",
+      "champ_072",
+      "champ_028"
+    ],
+    "eval_data": {
+      "answer": "x=±1, ±2, ±1/2"
+    }
+  },
+  {
+    "instance_id": "champ_00202",
+    "dataset": "champ",
+    "question": "Find the remainder of x^1959−1 divided by (x^2+1)(x^2+x+1).",
+    "skill_annotations": [
+      "champ_062",
+      "champ_057"
+    ],
+    "eval_data": {
+      "answer": "x^3-1"
+    }
+  },
+  {
+    "instance_id": "champ_00203",
+    "dataset": "champ",
+    "question": "Let P(x)=x^(2n)-2x^(2n-1)+3x^(2n-2)-4x^(2n-3)+...-2nx+2n+1. For how many values of n∈{1, 2, ..., 100} does P(x) has at least one real-valued root?",
+    "skill_annotations": [
+      "champ_065"
+    ],
+    "eval_data": {
+      "answer": "0 (none of the values)"
+    }
+  },
+  {
+    "instance_id": "champ_00204",
+    "dataset": "champ",
+    "question": "Find the smallest value of a^2+ab+b^2-3a-3b for real numbers a, b.",
+    "skill_annotations": [
+      "champ_080",
+      "champ_005",
+      "champ_007"
+    ],
+    "eval_data": {
+      "answer": "-3"
+    }
+  },
+  {
+    "instance_id": "champ_00205",
+    "dataset": "champ",
+    "question": "What is the largest integer n for which n^3+100 is divisible by n+10?",
+    "skill_annotations": [
+      "champ_044",
+      "champ_022"
+    ],
+    "eval_data": {
+      "answer": "890"
+    }
+  },
+  {
+    "instance_id": "champ_00206",
+    "dataset": "champ",
+    "question": "Let f(x) be a polynomial of degree n with integer coefficients. If there are three different integers a, b, c, such that f(a)=f(b)=f(c)=-1, then at most how many integer-valued roots can this polynomial have?",
+    "skill_annotations": [
+      "champ_055"
+    ],
+    "eval_data": {
+      "answer": "At most 0 integer-valued roots (i.e., no integer roots)"
+    }
+  },
+  {
+    "instance_id": "champ_00207",
+    "dataset": "champ",
+    "question": "If polynomial f(x, y) is symmetric (i.e., f(x, y)=f(y, x)) and x-y | f(x, y), can we always find h(x, y) with f(x, y)=(x-y)^2*h(x, y) such that h(x, y) is a polynomial function?",
+    "skill_annotations": [
+      "champ_067",
+      "champ_022"
+    ],
+    "eval_data": {
+      "answer": "Yes"
+    }
+  },
+  {
+    "instance_id": "champ_00208",
+    "dataset": "champ",
+    "question": "If f(x)=x^5-x+a is divisible by x-b for some integer b, what are possible values of a mod 5?",
+    "skill_annotations": [
+      "champ_062",
+      "champ_043"
+    ],
+    "eval_data": {
+      "answer": "0 is the only possible value"
+    }
+  },
+  {
+    "instance_id": "champ_00209",
+    "dataset": "champ",
+    "question": "The polynomial ax^3+bx^2+cx+d has integer coefficients a, b, c, d with ad odd and bc even. Can some values of a, b, c, d result in all three roots of the polynomial being integers?",
+    "skill_annotations": [
+      "champ_056"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00210",
+    "dataset": "champ",
+    "question": "Find a monic polynomial (i.e. a polynomial with the leading coefficient being 1) p(x) of degree greater than 1 that satisfies x*p(x-1)=(x-2023)*p(x).",
+    "skill_annotations": [
+      "champ_055"
+    ],
+    "eval_data": {
+      "answer": "x(x-1)(x-2)...(x-2022)"
+    }
+  },
+  {
+    "instance_id": "champ_00211",
+    "dataset": "champ",
+    "question": "The polynomial 1-x+x^2-x^3+...+x^8-x^9 may be written in the form a_0+a_1*y+a_2*y^2+...+a_9*y^9, where y=x+1 and each a_i is a constant. Find the value of a_2.",
+    "skill_annotations": [
+      "champ_065",
+      "champ_028"
+    ],
+    "eval_data": {
+      "answer": "120"
+    }
+  },
+  {
+    "instance_id": "champ_00212",
+    "dataset": "champ",
+    "question": "Let x_1, x_2, x_3 be the roots of x^3+3x^2-7x+1. Find x_1^2+x_2^2+x_3^2.",
+    "skill_annotations": [
+      "champ_056"
+    ],
+    "eval_data": {
+      "answer": "23"
+    }
+  },
+  {
+    "instance_id": "champ_00213",
+    "dataset": "champ",
+    "question": "Is it possible that each of the polynomials P(x)=ax^2+bx+c, Q(x)=cx^2+ax+b and R(x)=bx^2+cx+a has two different real roots with positive values of a, b, c?",
+    "skill_annotations": [
+      "champ_071"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00214",
+    "dataset": "champ",
+    "question": "Find all integer solutions to the equation x^3+x^2*y+x*y^2+y^3=8(x^2+xy+y^2+1).",
+    "skill_annotations": [
+      "champ_044",
+      "champ_005",
+      "champ_062"
+    ],
+    "eval_data": {
+      "answer": "(x=8, y=2), (x=2, y=8)"
+    }
+  },
+  {
+    "instance_id": "champ_00215",
+    "dataset": "champ",
+    "question": "Find the value of a such that the polynomial x^5−ax^2−ax+1 has a root with multiplicity more than 1 at x=-1.",
+    "skill_annotations": [
+      "champ_058"
+    ],
+    "eval_data": {
+      "answer": "-5"
+    }
+  },
+  {
+    "instance_id": "champ_00216",
+    "dataset": "champ",
+    "question": "Find all integer solutions to the equations x^5+y^5=33, x+y=3.",
+    "skill_annotations": [
+      "champ_053"
+    ],
+    "eval_data": {
+      "answer": "(x=1, y=2) and (x=2, y=1)"
+    }
+  },
+  {
+    "instance_id": "champ_00217",
+    "dataset": "champ",
+    "question": "Find the remainder of x^100-2x^51+1 divided by x^2-1.",
+    "skill_annotations": [
+      "champ_062"
+    ],
+    "eval_data": {
+      "answer": "-2x+2"
+    }
+  },
+  {
+    "instance_id": "champ_00218",
+    "dataset": "champ",
+    "question": "How many real-valued zeros does the polynomial 1+x+x^2/2!+x^3/3!+...+x^(2n)/(2n)! have?",
+    "skill_annotations": [
+      "champ_018"
+    ],
+    "eval_data": {
+      "answer": "0 (i.e., no real-valued zeros)"
+    }
+  },
+  {
+    "instance_id": "champ_00219",
+    "dataset": "champ",
+    "question": "What is the minimum value of the sum of squares of the zeros of x^2-(a-2)x-a-1 for real number a?",
+    "skill_annotations": [
+      "champ_081",
+      "champ_005",
+      "champ_007"
+    ],
+    "eval_data": {
+      "answer": "5"
+    }
+  },
+  {
+    "instance_id": "champ_00221",
+    "dataset": "champ",
+    "question": "Let a sequence be the defined as a_0=a_1=1, and a_(n+1)=a_(n-1)*a_n+1. What is a_1964 mod 4?",
+    "skill_annotations": [
+      "champ_010",
+      "champ_050"
+    ],
+    "eval_data": {
+      "answer": "3"
+    }
+  },
+  {
+    "instance_id": "champ_00223",
+    "dataset": "champ",
+    "question": "A sequence {a_n} is defined by a_1=1, a_(n+1)=a_n+1/a_n^2. Does a finite limit of a_n exist, and if so, find it.",
+    "skill_annotations": [
+      "champ_044"
+    ],
+    "eval_data": {
+      "answer": "The limit does not exist"
+    }
+  },
+  {
+    "instance_id": "champ_00225",
+    "dataset": "champ",
+    "question": "Let the sequence be defined as a_n=1/C(n, 0)+1/C(n, 1)+...+1/C(n, n). Does the limit of the sequence exist, and if so, what is it?",
+    "skill_annotations": [
+      "champ_054",
+      "champ_037",
+      "champ_003"
+    ],
+    "eval_data": {
+      "answer": "The limit exists and is equal to 2"
+    }
+  },
+  {
+    "instance_id": "champ_00226",
+    "dataset": "champ",
+    "question": "Does there exist a positive sequence {a_n}, such that both sum a_n and sum 1/(n^2*a_n) converge to finite values?",
+    "skill_annotations": [
+      "champ_063",
+      "champ_027"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00227",
+    "dataset": "champ",
+    "question": "What are possible values of the limit of the sequence x_(n+1)=(x_n+a/x_n)/2, for different values of x_0>0, a>0, possibly as an expression of x_0, a?",
+    "skill_annotations": [
+      "champ_005"
+    ],
+    "eval_data": {
+      "answer": "The only possible value for the limit is sqrt(a)"
+    }
+  },
+  {
+    "instance_id": "champ_00229",
+    "dataset": "champ",
+    "question": "Does the limit exist for the sequence defined by a_0=0, a_(n+1)=sqrt(4+3a_n), and if so, find it.",
+    "skill_annotations": [
+      "champ_003",
+      "champ_064"
+    ],
+    "eval_data": {
+      "answer": "The limit exists and is equal to 4"
+    }
+  },
+  {
+    "instance_id": "champ_00231",
+    "dataset": "champ",
+    "question": "Let {x_n}, {y_n}, {z_n} be three sequences with positive initial terms x_1, y_1, z_1, defined as x_(n+1)=y_n+1/z_n, y_(n+1)=z_n+1/x_n, z_(n+1)=x_n+1/y_n. Let w_n be the maximum value of x_n, y_n, z_n. For different values of x_1, y_1, z_1, do we have w_200 always greater than 20, always smaller than 20, or sometimes greater and sometimes smaller than 20?",
+    "skill_annotations": [
+      "champ_068",
+      "champ_005",
+      "champ_001"
+    ],
+    "eval_data": {
+      "answer": "Always greater than 20"
+    }
+  },
+  {
+    "instance_id": "champ_00232",
+    "dataset": "champ",
+    "question": "Let a_n be the number of all permutations p of {1, ..., n} with |p(i)−i|≤1 for all i. Find a_10.",
+    "skill_annotations": [
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "89"
+    }
+  },
+  {
+    "instance_id": "champ_00233",
+    "dataset": "champ",
+    "question": "The sequence a_0, a_1, a_2, ... is such that, for all nonnegative m≥n, we have a_(m+n)+a_(m−n)=(a_(2m)+a_(2n))/2. If a_1=1, find a_50.",
+    "skill_annotations": [
+      "champ_005"
+    ],
+    "eval_data": {
+      "answer": "2500"
+    }
+  },
+  {
+    "instance_id": "champ_00234",
+    "dataset": "champ",
+    "question": "A sequence {x_n} is defined by x_1=2, x_(n+1)=(x_n^4+9)/(10x_n). For how many values of x_1, x_2, ..., x_1000 do we have x_n≤5/4?",
+    "skill_annotations": [
+      "champ_066"
+    ],
+    "eval_data": {
+      "answer": "999 (i.e., all except for one value)"
+    }
+  },
+  {
+    "instance_id": "champ_00235",
+    "dataset": "champ",
+    "question": "A sequence is defined as a_1=0, |a_n|=|a_(n-1)+1|. What is the smallest value of (a_1+a_2+...+a_n)/n for even n?",
+    "skill_annotations": [
+      "champ_005",
+      "champ_007"
+    ],
+    "eval_data": {
+      "answer": "-1/2"
+    }
+  },
+  {
+    "instance_id": "champ_00237",
+    "dataset": "champ",
+    "question": "Is it possible to select an infinite geometric sequence from the sequence 1, 1/2, 1/4, 1/8, 1/16, ... such that the sum is 1/5, and if so, what is the sequence?",
+    "skill_annotations": [
+      "champ_065"
+    ],
+    "eval_data": {
+      "answer": "It is not possible"
+    }
+  },
+  {
+    "instance_id": "champ_00238",
+    "dataset": "champ",
+    "question": "A sequence is defined by a_1=sqrt(2), a_(n+1)=sqrt(2)^a_n. Does the limit for the sequence exist, and if so, find it.",
+    "skill_annotations": [
+      "champ_003"
+    ],
+    "eval_data": {
+      "answer": "The limit exists and is equal to 2"
+    }
+  },
+  {
+    "instance_id": "champ_00241",
+    "dataset": "champ",
+    "question": "Does the limit exist for the sequence defined as a_n=((2^3-1)/(2^3+1))*((3^3-1)/(3^3+1))*((4^3-1)/(4^3+1))*...*((n^3-1)/(n^3+1)), and if so, find it.",
+    "skill_annotations": [
+      "champ_046",
+      "champ_005"
+    ],
+    "eval_data": {
+      "answer": "The limit exists and is equal to 2/3"
+    }
+  },
+  {
+    "instance_id": "champ_00243",
+    "dataset": "champ",
+    "question": "For a≤b, define the sequence as a_1=a, a_2=b, a_(n+2)=(a_(n+1)+a_n)/2. Does the limit exist for this sequence, and if so, find it as an expression in terms of a and b.",
+    "skill_annotations": [
+      "champ_020",
+      "champ_065"
+    ],
+    "eval_data": {
+      "answer": "The limit exists and is equal to (a+3b)/2"
+    }
+  },
+  {
+    "instance_id": "champ_00244",
+    "dataset": "champ",
+    "question": "What are possible values of the limit of the sequence a_n=sqrt(a_(n-1))+sqrt(a_(n-2)), for different initial values of 0<a_0, a_1<1, possibly as an expression of a_0, a_1?",
+    "skill_annotations": [
+      "champ_064",
+      "champ_003"
+    ],
+    "eval_data": {
+      "answer": "The only possible value for the limit is 4"
+    }
+  },
+  {
+    "instance_id": "champ_00246",
+    "dataset": "champ",
+    "question": "Let 0<a<b. Define two sequences {a_n} and {b_n} as a_0=a, b_0=b, a_(n+1)=sqrt(a_n*b_n), b_(n+1)=(a_n+b_n)/2. What is the value of (b_(n+1)-a_(n+1))*b_(n+2)/(b_n-a_n)^2?",
+    "skill_annotations": [
+      "champ_005",
+      "champ_006"
+    ],
+    "eval_data": {
+      "answer": "8"
+    }
+  },
+  {
+    "instance_id": "champ_00248",
+    "dataset": "champ",
+    "question": "A sequence {x_n} is defined by x_1=2, x_(n+1)=(x_n^4+9)/(10x_n). For how many values of x_1, x_2, ..., x_1000 do we have x_n>4/5?",
+    "skill_annotations": [
+      "champ_066"
+    ],
+    "eval_data": {
+      "answer": "1000 (i.e., all values)"
+    }
+  },
+  {
+    "instance_id": "champ_00249",
+    "dataset": "champ",
+    "question": "Let 0<a<b. Define two sequences {a_n} and {b_n} as a_0=a, b_0=b, a_(n+1)=sqrt(a_n*b_n), b_(n+1)=(a_n+b_n)/2. Is the sequence a_n/b_n monotonically increasing, monotonically decreasing, or neither?",
+    "skill_annotations": [
+      "champ_063"
+    ],
+    "eval_data": {
+      "answer": "Monotonically increasing"
+    }
+  },
+  {
+    "instance_id": "champ_00250",
+    "dataset": "champ",
+    "question": "The sequence {x_n} is defined by x_1=2, x_(n+1)=(2+x_n)/(1−2x_n). Must x_n≠0 for all n in the sequence?",
+    "skill_annotations": [
+      "champ_059",
+      "champ_060",
+      "champ_071"
+    ],
+    "eval_data": {
+      "answer": "Yes"
+    }
+  },
+  {
+    "instance_id": "champ_00251",
+    "dataset": "champ",
+    "question": "The terms of the sequence a_1, a_2, a_3, ... are all positive, and a_(n+1)=sqrt(1+a_n) for all n. Does there exist such a sequence with all a_n being rational numbers, and if so, find the smallest possible value of a_1 such that the sequence satisfies the condition.",
+    "skill_annotations": [
+      "champ_048",
+      "champ_000"
+    ],
+    "eval_data": {
+      "answer": "The sequence does not exist"
+    }
+  },
+  {
+    "instance_id": "champ_00254",
+    "dataset": "champ",
+    "question": "Let a_n be the number of all permutations p of {1, ..., n} with min(n-|p(i)−i|, |p(i)−i|)≤1 for all i. Find a_10.",
+    "skill_annotations": [
+      "champ_012"
+    ],
+    "eval_data": {
+      "answer": "125"
+    }
+  },
+  {
+    "instance_id": "champ_00255",
+    "dataset": "champ",
+    "question": "For a>0, does the limit of the sequence defined by a_0=sqrt(a), a_(n+1)=sqrt(a+a_n) exist, and if so, find it as an expression of a.",
+    "skill_annotations": [
+      "champ_003",
+      "champ_064",
+      "champ_070"
+    ],
+    "eval_data": {
+      "answer": "The limit exists and is equal to (1+sqrt(4a+1))/2"
+    }
+  },
+  {
+    "instance_id": "champ_00257",
+    "dataset": "champ",
+    "question": "Is it possible to select an infinite geometric sequence from the sequence 1, 1/2, 1/4, 1/8, 1/16, ... such that the sum is 1/7, and if so, what is the sequence?",
+    "skill_annotations": [
+      "champ_065"
+    ],
+    "eval_data": {
+      "answer": "Yes, and the sequence is 1/2^3, 1/2^6, 1/2^9, ..."
+    }
+  },
+  {
+    "instance_id": "champ_00259",
+    "dataset": "champ",
+    "question": "A sequence {a_n} is defined by a_1=1, a_(n+1)=a_n+1/a_n^2. Do we have a_9000>30?",
+    "skill_annotations": [
+      "champ_044"
+    ],
+    "eval_data": {
+      "answer": "Yes"
+    }
+  },
+  {
+    "instance_id": "champ_00263",
+    "dataset": "champ",
+    "question": "The sequence {x_n} is defined by x_1=2, x_(n+1)=(2+x_n)/(1−2x_n), and it is known that there are no x_n=0. Could x_p=x_q for any p≠q, and if so, find the smallest possible value of p+q.",
+    "skill_annotations": [
+      "champ_059",
+      "champ_069"
+    ],
+    "eval_data": {
+      "answer": "No"
+    }
+  },
+  {
+    "instance_id": "champ_00264",
+    "dataset": "champ",
+    "question": "Are there prime numbers in the sequence {a_n} with a_1=10001, a_2=100010001, a_3=1000100010001, ... (there are three 0s in between each pair of 1s). If so, what is the smallest one?",
+    "skill_annotations": [
+      "champ_065",
+      "champ_006",
+      "champ_035",
+      "champ_025"
+    ],
+    "eval_data": {
+      "answer": "There are no prime numbers in the sequence"
+    }
+  },
+  {
+    "instance_id": "champ_00266",
+    "dataset": "champ",
+    "question": "Let {x_n}, {y_n}, {z_n} be three sequences with positive initial terms x_1, y_1, z_1, defined as x_(n+1)=y_n+1/z_n, y_(n+1)=z_n+1/x_n, z_(n+1)=x_n+1/y_n. At most how many of the three sequences can be bounded?",
+    "skill_annotations": [
+      "champ_068",
+      "champ_005",
+      "champ_001"
+    ],
+    "eval_data": {
+      "answer": "0 (i.e., no sequence is bounded)"
+    }
+  },
+  {
+    "instance_id": "champ_00267",
+    "dataset": "champ",
+    "question": "Does the limit exist for the sequence defined by a_0=0, a_(n+1)=sqrt(6+a_n), and if so, find it.",
+    "skill_annotations": [
+      "champ_003",
+      "champ_064"
+    ],
+    "eval_data": {
+      "answer": "The limit exists and is equal to 3"
+    }
+  }
+]
