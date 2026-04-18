@@ -54,6 +54,8 @@ gold skill (**Single**) or multiple gold skills (**Multi**).
 
 ## Install
 
+Requires Python 3.10 – 3.12.
+
 ```bash
 pip install -e .       # or: uv sync
 ```
@@ -64,6 +66,10 @@ Unzip the skill library:
 unzip data/bench/corpus/corpus.json.zip -d data/bench/corpus/
 ```
 
+Dense retrievers (`bge`, `contriever`) download their checkpoints from
+the HuggingFace Hub on first use (~440 MB for BGE, ~440 MB for
+Contriever).
+
 <details><summary>ToolQA external corpus (only needed to run ToolQA)</summary>
 
 Download from the
@@ -73,6 +79,56 @@ Download from the
 
 Inference requires an OpenAI-compatible chat endpoint. Point
 `--api-base` at any compatible server (OpenAI, vLLM, SGLang, Ollama, …).
+`--model` is the served model identifier — a model ID like
+`gpt-4o-mini` for hosted APIs, or whatever string the local server is
+serving (often a path like `/models/Qwen3-32B`) for vLLM/SGLang. For
+endpoints that require auth, set `OPENAI_API_KEY`; local unauthenticated
+servers accept any value.
+
+## Quickstart
+
+An end-to-end run of the three stages on TheoremQA with BM25 Top-1:
+
+```bash
+# Pick one (examples; any OpenAI-compatible endpoint works).
+# Hosted:  MODEL=gpt-4o-mini           API_BASE=https://api.openai.com/v1
+# Local :  MODEL=/models/Qwen3-32B     API_BASE=http://localhost:8000/v1
+MODEL=<MODEL>
+API_BASE=<API_BASE>
+
+# 1. Retrieve — BM25 top-50 per query.
+sragents retrieve --retriever bm25 \
+    --corpus data/bench/corpus/corpus.json \
+    --instances data/bench/instances/theoremqa.json \
+    --output results/retrieval/theoremqa-bm25.json
+
+# 2. Infer — prepend the top-1 BM25 skill and generate an answer.
+sragents infer \
+    --instances data/bench/instances/theoremqa.json \
+    --output results/inference/theoremqa-bm25_top1.jsonl \
+    --model $MODEL --api-base $API_BASE \
+    --provider topk \
+      --provider-arg source=results/retrieval/theoremqa-bm25.json \
+      --provider-arg k=1 \
+    --engine direct --label bm25_top1
+
+# 3. Evaluate — extract + score against ground truth.
+sragents evaluate \
+    --input results/inference/theoremqa-bm25_top1.jsonl \
+    --instances data/bench/instances/theoremqa.json \
+    --output results/eval/theoremqa-bm25_top1.json
+```
+
+The evaluator prints overall accuracy and saves a JSON of the form
+
+```json
+{
+  "dataset": "theoremqa", "method": "bm25_top1", "model": "...",
+  "metrics": {"accuracy": 0.XX, "correct": N, "total": 747},
+  "details": [{"instance_id": "...", "extracted_answer": "...",
+               "correct": true, "ground_truth": "...", ...}]
+}
+```
 
 ## Pipeline
 
@@ -158,7 +214,7 @@ sragents rerank \
     --input results/retrieval/theoremqa-bm25.json \
     --output results/retrieval/theoremqa-rerank_bm25.json \
     --instances data/bench/instances/theoremqa.json \
-    --model /path/to/model --api-base http://localhost:8000/v1 \
+    --model <MODEL> --api-base <API_BASE> \
     --top-k 50
 ```
 
@@ -171,7 +227,7 @@ sragents rerank \
 sragents infer \
     --instances data/bench/instances/theoremqa.json \
     --output results/inference/theoremqa-Qwen3-32B-bm25_top1.jsonl \
-    --model /path/to/model --api-base http://localhost:8000/v1 \
+    --model <MODEL> --api-base <API_BASE> \
     --provider topk \
       --provider-arg source=results/retrieval/theoremqa-bm25.json \
       --provider-arg k=1 \
@@ -188,7 +244,7 @@ Common recipes:
 | BM25 Top-1 | `--provider topk --provider-arg source=… --provider-arg k=1 --engine direct` |
 | BM25 Select | `--provider llm_select --provider-arg source=… --provider-arg pool=50 --engine direct` |
 | Progressive Disclosure | `--provider topk --provider-arg source=… --provider-arg k=50 --engine progressive_disclosure` |
-| ToolQA | Replace `--engine direct` with `--engine react` (or `--engine progressive_disclosure` with `--engine react_progressive_disclosure`) |
+| ToolQA | For any of the above, use `--engine react` in place of `direct`, or `--engine react_progressive_disclosure` in place of `progressive_disclosure` |
 
 ### 3. Evaluate
 
@@ -228,25 +284,41 @@ for ds in $DATASETS; do
 done
 ```
 
-The LLM rerank file (`*-rerank_bm25-<model>.json`) is model-dependent
-and produced on demand by `sragents experiment --exp
-retrieval_comparison` (it invokes `sragents rerank` once per dataset
-for the evaluated model).
+The LLM rerank output is model-dependent (file name:
+`*-rerank_bm25-<model>.json`), so it has to be produced once per
+evaluated model:
+
+```bash
+MODEL=<MODEL>          # same identifier you pass to `sragents infer --model`
+API_BASE=<API_BASE>
+for ds in $DATASETS; do
+    sragents rerank \
+        --input  results/retrieval/$ds-bm25.json \
+        --output results/retrieval/$ds-rerank_bm25-$(basename $MODEL).json \
+        --instances data/bench/instances/$ds.json \
+        --model $MODEL --api-base $API_BASE --top-k 50
+done
+```
+
+`sragents experiment --exp retrieval_comparison` will also trigger
+`sragents rerank` on demand if the file is missing.
 
 Then run each experiment with the named catalog:
 
 ```bash
 # Main table: 5 skill-use methods × 6 datasets.
 sragents experiment --exp main \
-    --model /path/to/model --api-base http://localhost:8000/v1
+    --model <MODEL> --api-base <API_BASE>
 
 # Retriever comparison (rank-1 end-to-end under BM25 / TF-IDF / BGE /
 # Contriever / Hybrid / BM25 + Rerank).
-sragents experiment --exp retrieval_comparison ...
+sragents experiment --exp retrieval_comparison \
+    --model <MODEL> --api-base <API_BASE>
 
 # Noise robustness (oracle + N hard-negative distractors) in both
 # context-injection and progressive-disclosure modes.
-sragents experiment --exp distractor ...
+sragents experiment --exp distractor \
+    --model <MODEL> --api-base <API_BASE>
 ```
 
 Narrow the scope with `--dataset theoremqa logicbench` or
