@@ -143,10 +143,15 @@ Infer     ─── Provider × Engine  ───▶ inference/*.jsonl  (skill i
 Evaluate  ─── Evaluator          ───▶ eval/*.json        (end-task scoring)
 ```
 
-`infer` jointly covers paper stages 2 and 3: the `Provider` selects
-and transforms the skills to actually incorporate, and the `Engine`
-applies them while solving the task. `evaluate` scores the end-task
-output — it is not one of the paper's SRA stages.
+`infer` jointly covers paper stages 2 and 3. The `Provider` supplies
+the instance's *candidate* skills — possibly one pre-selected skill,
+possibly a larger pool for the engine to narrow further. The `Engine`
+consumes those candidates and produces the answer: simple engines
+(`direct`) statically prepend everything they receive; agentic engines
+(`progressive_disclosure`, `react`, `react_progressive_disclosure`)
+interleave further skill selection with solving inside their reasoning
+loop. `evaluate` scores the
+end-task output — it is not one of the paper's SRA stages.
 
 Each stage's output is consumed by the next via an explicit path
 argument, so any stage can be swapped or rerun in isolation. Every
@@ -154,12 +159,14 @@ stage supports per-instance resume.
 
 Inference is decomposed along two orthogonal axes:
 
-* **SkillProvider** — *which* skills an instance receives (none / oracle
-  / top-K retrieval / LLM-selected / oracle + hard-negative
-  distractors).
-* **InferenceEngine** — *how* those skills are exposed to the model
-  (skill prepending / progressive-disclosure agent loop / ReAct loop
-  for ToolQA).
+* **SkillProvider** — the *candidate skills* an instance receives
+  (none / oracle / top-K retrieval / LLM-selected / oracle +
+  hard-negative distractors). May already be narrowed to one skill
+  or left as a pool.
+* **InferenceEngine** — how those candidates are turned into an
+  answer (static prepending / progressive-disclosure agent loop /
+  ReAct loop for ToolQA). Agentic engines perform further
+  in-loop skill selection.
 
 Five built-in skill-use methods, each a specific (Provider, Engine)
 combination:
@@ -186,7 +193,7 @@ sragents list retrievers     # bm25 tfidf bge contriever
 sragents list providers      # none oracle topk llm_select oracle_distractor
 sragents list engines        # direct progressive_disclosure react react_progressive_disclosure
 sragents list datasets       # theoremqa logicbench toolqa champ medcalcbench bigcodebench
-sragents list experiments    # main, retrieval_comparison, distractor, ...
+sragents list experiments    # main, retrieval_comparison, topk_sweep, distractor, ...
 ```
 
 ### 1. Retrieve
@@ -257,10 +264,16 @@ sragents evaluate \
 
 ## Reproducing the paper experiments
 
-The paper evaluates six retrievers: BM25, TF-IDF, BGE, Contriever, a
-round-robin hybrid of BM25 and BGE, and an LLM rerank of BM25's top-50.
-Pre-compute the first four directly, then fuse BM25 and BGE into the
-hybrid file:
+The paper reports six retrievers at the retrieval-metric level
+(Recall@K, nDCG@K): BM25, TF-IDF, BGE, Contriever, a round-robin
+hybrid of BM25 and BGE, and an LLM rerank of BM25's top-50. The
+end-to-end retriever-comparison experiment (`retrieval_comparison`
+below) runs five of those — the rank-1 Hybrid is not included because
+round-robin fusion always returns BM25's top-1 at rank 1, so its
+end-to-end numbers are identical to BM25.
+
+Pre-compute the first four retrievers directly, then fuse BM25 + BGE
+into the hybrid file:
 
 ```bash
 DATASETS="theoremqa logicbench toolqa champ medcalcbench bigcodebench"
@@ -275,7 +288,7 @@ for ds in $DATASETS; do
     done
 done
 
-# Round-robin fusion of BM25 + BGE
+# Round-robin fusion of BM25 + BGE (for retrieval-metric evaluation).
 for ds in $DATASETS; do
     sragents hybrid \
         --input results/retrieval/$ds-bm25.json \
@@ -311,8 +324,13 @@ sragents experiment --exp main \
     --model <MODEL> --api-base <API_BASE>
 
 # Retriever comparison (rank-1 end-to-end under BM25 / TF-IDF / BGE /
-# Contriever / Hybrid / BM25 + Rerank).
+# Contriever / BM25 + Rerank).
 sragents experiment --exp retrieval_comparison \
+    --model <MODEL> --api-base <API_BASE>
+
+# Context skill-count sweep: BM25 top-K skills in context
+# (K ∈ {1, 2, 4, 8}; K=1 overlaps with the main experiment's bm25_top1).
+sragents experiment --exp topk_sweep \
     --model <MODEL> --api-base <API_BASE>
 
 # Noise robustness (oracle + N hard-negative distractors) in both

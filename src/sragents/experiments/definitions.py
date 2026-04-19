@@ -105,12 +105,15 @@ _MAIN = ExperimentSpec(
 
 _RETRIEVAL = ExperimentSpec(
     name="retrieval_comparison",
-    description="End-to-end performance under different retrievers (rank 1).",
+    description="End-to-end performance under different retrievers (rank 1). "
+                "`bm25_top1` is shared with `main` and `topk_sweep`; if any "
+                "of those has run first, the runner reuses its result here.",
     methods=[
-        # ``bm25_top1`` is also in ``_MAIN``; listed here so the runner can
-        # reproduce the retriever-comparison table standalone. Shared label
-        # means the runner's output-exists skip reuses any main-experiment
-        # result automatically.
+        # ``bm25_top1`` is shared with ``_MAIN`` and ``_TOPK_SWEEP``. Kept
+        # here so this experiment is self-contained (running it standalone
+        # produces all 5 rows of the paper's retriever-comparison table).
+        # The shared label means the runner reuses whichever sibling cell
+        # already exists instead of re-running bm25_top1 from scratch.
         Method(
             label="bm25_top1",
             display_name="BM25",
@@ -141,13 +144,6 @@ _RETRIEVAL = ExperimentSpec(
             engine_toolqa="react",
         ),
         Method(
-            label="hybrid_bm25_bge_top1",
-            display_name="Hybrid",
-            provider="topk",
-            provider_args={"source": "hybrid_bm25_bge", "k": 1},
-            engine_toolqa="react",
-        ),
-        Method(
             label="rerank_bm25",
             display_name="BM25 + Rerank",
             provider="topk",
@@ -157,11 +153,42 @@ _RETRIEVAL = ExperimentSpec(
     ],
 )
 
-# RQ2 distractor experiment (paper §4.2). N ∈ {0, 2, 4, 8}; gold skill is
-# always included; N hard-negative distractors drawn from BM25/BGE top-50.
-# Two skill-exposure modes from the paper figure:
+# Context skill-count sweep: BM25 top-K skills prepended to the prompt.
+# K ∈ {1, 2, 4, 8}; K=1 is shared with ``_MAIN.bm25_top1`` and
+# ``_RETRIEVAL.bm25_top1`` — kept here for self-containment, and the shared
+# label means the runner reuses any sibling-cell result that already exists.
+_TOPK_SWEEP = ExperimentSpec(
+    name="topk_sweep",
+    description="Context skill-count sweep: BM25 top-K skills in context "
+                "(K ∈ {1, 2, 4, 8}). `bm25_top1` is shared with `main` and "
+                "`retrieval_comparison`.",
+    methods=[
+        Method(
+            label=f"bm25_top{k}",
+            display_name=f"BM25 Top-{k}",
+            provider="topk",
+            provider_args={"source": "bm25", "k": k},
+            engine="direct",
+            engine_toolqa="react",
+        )
+        for k in (1, 2, 4, 8)
+    ],
+)
+
+# RQ2 distractor experiment (paper §4.2). Gold skill always included; N
+# hard-negative distractors drawn from BM25 / BGE top-50. Two skill-exposure
+# modes from the paper figure:
 #   * Context — full content of all candidates prepended to the prompt;
 #   * Progressive Disclosure — catalog + on-demand loading.
+#
+# Both sweeps include N ∈ {0, 2, 4, 8} so each experiment is self-contained.
+# Overlap note:
+#   * Context N=0 (``oracle_d0``) produces the same prompt as
+#     ``_MAIN.oracle_skill`` (gold skill only, no distractors), but has
+#     a different label so it runs separately.
+#   * PD N=0 (``pd_oracle_d0``) has no counterpart in ``_MAIN``:
+#     main's PD shows a BM25 top-50 catalog, whereas PD N=0 shows only
+#     the gold skill.
 _DISTRACTOR_CONTEXT = [
     Method(
         label=f"oracle_d{n}",
@@ -213,6 +240,7 @@ _DISTRACTOR_PD_ONLY = ExperimentSpec(
 
 EXPERIMENTS: dict[str, ExperimentSpec] = {
     e.name: e for e in (
-        _MAIN, _RETRIEVAL, _DISTRACTOR, _DISTRACTOR_CTX, _DISTRACTOR_PD_ONLY,
+        _MAIN, _RETRIEVAL, _TOPK_SWEEP,
+        _DISTRACTOR, _DISTRACTOR_CTX, _DISTRACTOR_PD_ONLY,
     )
 }

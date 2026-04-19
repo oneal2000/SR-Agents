@@ -2,12 +2,25 @@
 
 An inference run is ``SkillProvider`` × ``InferenceEngine``:
 
-* A :class:`SkillProvider` decides **which** skills an instance
-  receives. It is cheap, does not call the LLM, and runs once per
-  instance.
-* An :class:`InferenceEngine` decides **how** those skills are handed
-  to the model — by skill prepending, as a catalog the model loads on
-  demand, as a ReAct action, etc. Engines own the LLM calls.
+* A :class:`SkillProvider` supplies the **candidate skills** for an
+  instance. It can return one skill already chosen (``oracle``,
+  ``topk(k=1)``, ``llm_select``) or a larger pool for the engine to
+  narrow further (``topk(k=50)``, ``oracle_distractor``). Providers
+  may call the LLM — ``llm_select`` does — but only to filter/rank
+  candidates, never to solve the task.
+* An :class:`InferenceEngine` consumes those candidates and produces
+  the task output. Simple engines use them as-is (``direct`` prepends
+  every candidate); agentic engines (``progressive_disclosure``,
+  ``react``, ``react_progressive_disclosure``) interleave further
+  candidate selection with solving — the model sees a catalog and
+  loads skills on demand inside its reasoning loop. Engines own the
+  task-solving LLM call(s).
+
+The paper's three stages — retrieval, incorporation, application —
+map cleanly onto ``retrieve / Provider / Engine`` for non-agentic
+methods. Agentic engines fold the incorporation decision into the
+application loop, so the Provider/Engine boundary is pragmatic rather
+than a strict Stage 2 / Stage 3 split.
 
 This split lets you add new methods by writing one small module.
 
