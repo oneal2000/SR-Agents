@@ -1,6 +1,6 @@
 # SR-Agents
 
-[![Dataset on 🤗](https://huggingface.co/datasets/huggingface/badges/resolve/main/dataset-on-hf-md.svg)](https://huggingface.co/datasets/longjm/SRA-Bench)
+[![Dataset on 🤗](https://huggingface.co/datasets/huggingface/badges/resolve/main/dataset-on-hf-md.svg)](https://huggingface.co/datasets/WeihangSu/SRA-Bench)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10--3.12-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
 
@@ -63,10 +63,10 @@ pip install -e .       # or: uv sync
 ```
 
 Download SRA-Bench (skill corpus + test instances) from the
-[HuggingFace dataset page](https://huggingface.co/datasets/longjm/SRA-Bench):
+[HuggingFace dataset page](https://huggingface.co/datasets/WeihangSu/SRA-Bench):
 
 ```bash
-huggingface-cli download longjm/SRA-Bench --repo-type dataset \
+huggingface-cli download WeihangSu/SRA-Bench --repo-type dataset \
     --local-dir data/bench
 ```
 
