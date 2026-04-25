@@ -328,8 +328,11 @@ sragents experiment --exp main \
 sragents experiment --exp retrieval_comparison \
     --model <MODEL> --api-base <API_BASE>
 
-# Context skill-count sweep: BM25 top-K skills in context
-# (K ∈ {1, 2, 4, 8}; K=1 overlaps with the main experiment's bm25_top1).
+# Retrieval-depth sweep: BM25 top-K skills under both Context and
+# Progressive Disclosure exposure modes (K ∈ {1, 2, 4, 8}; K=1 Context
+# overlaps with the main experiment's bm25_top1). Use
+# `--exp topk_sweep_context` or `--exp topk_sweep_progressive_disclosure`
+# to run only one mode.
 sragents experiment --exp topk_sweep \
     --model <MODEL> --api-base <API_BASE>
 

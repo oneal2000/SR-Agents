@@ -153,26 +153,62 @@ _RETRIEVAL = ExperimentSpec(
     ],
 )
 
-# Context skill-count sweep: BM25 top-K skills prepended to the prompt.
-# K ∈ {1, 2, 4, 8}; K=1 is shared with ``_MAIN.bm25_top1`` and
-# ``_RETRIEVAL.bm25_top1`` — kept here for self-containment, and the shared
-# label means the runner reuses any sibling-cell result that already exists.
+# Retrieval-depth sweep: how much of the BM25 ranking to expose to the
+# agent. K ∈ {1, 2, 4, 8} under both skill-exposure modes from the paper:
+#   * Context — full content of all top-K skills prepended to the prompt;
+#   * Progressive Disclosure — top-K skills shown as a compact catalog,
+#     full content revealed only on explicit load.
+#
+# Overlap notes:
+#   * Context K=1 (``bm25_top1``) is shared with ``_MAIN.bm25_top1`` and
+#     ``_RETRIEVAL.bm25_top1`` — the shared label means the runner reuses
+#     any sibling-cell result that already exists.
+#   * PD K=1 (``pd_bm25_top1``) has no counterpart in ``_MAIN``: main's
+#     Progressive Disclosure shows a BM25 top-50 catalog, whereas this
+#     row shows only the top-1 candidate.
+_TOPK_SWEEP_CONTEXT = [
+    Method(
+        label=f"bm25_top{k}",
+        display_name=f"BM25 Top-{k}",
+        provider="topk",
+        provider_args={"source": "bm25", "k": k},
+        engine="direct",
+        engine_toolqa="react",
+    )
+    for k in (1, 2, 4, 8)
+]
+
+_TOPK_SWEEP_PD = [
+    Method(
+        label=f"pd_bm25_top{k}",
+        display_name=f"Progressive Disclosure (K={k})",
+        provider="topk",
+        provider_args={"source": "bm25", "k": k},
+        engine="progressive_disclosure",
+        engine_toolqa="react_progressive_disclosure",
+    )
+    for k in (1, 2, 4, 8)
+]
+
 _TOPK_SWEEP = ExperimentSpec(
     name="topk_sweep",
-    description="Context skill-count sweep: BM25 top-K skills in context "
-                "(K ∈ {1, 2, 4, 8}). `bm25_top1` is shared with `main` and "
-                "`retrieval_comparison`.",
-    methods=[
-        Method(
-            label=f"bm25_top{k}",
-            display_name=f"BM25 Top-{k}",
-            provider="topk",
-            provider_args={"source": "bm25", "k": k},
-            engine="direct",
-            engine_toolqa="react",
-        )
-        for k in (1, 2, 4, 8)
-    ],
+    description="Retrieval-depth sweep: BM25 top-K skills under both "
+                "Context and Progressive Disclosure exposure modes "
+                "(K ∈ {1, 2, 4, 8}). `bm25_top1` is shared with `main` "
+                "and `retrieval_comparison`.",
+    methods=_TOPK_SWEEP_CONTEXT + _TOPK_SWEEP_PD,
+)
+
+_TOPK_SWEEP_CTX_ONLY = ExperimentSpec(
+    name="topk_sweep_context",
+    description="Retrieval-depth sweep, Context exposure only.",
+    methods=_TOPK_SWEEP_CONTEXT,
+)
+
+_TOPK_SWEEP_PD_ONLY = ExperimentSpec(
+    name="topk_sweep_progressive_disclosure",
+    description="Retrieval-depth sweep, Progressive Disclosure exposure only.",
+    methods=_TOPK_SWEEP_PD,
 )
 
 # RQ2 distractor experiment (paper §4.2). Gold skill always included; N
@@ -182,25 +218,37 @@ _TOPK_SWEEP = ExperimentSpec(
 #   * Progressive Disclosure — catalog + on-demand loading.
 #
 # Both sweeps include N ∈ {0, 2, 4, 8} so each experiment is self-contained.
-# Overlap note:
-#   * Context N=0 (``oracle_d0``) produces the same prompt as
-#     ``_MAIN.oracle_skill`` (gold skill only, no distractors), but has
-#     a different label so it runs separately.
+# Overlap notes:
+#   * Context N=0 reuses the ``oracle_skill`` label from ``_MAIN`` — when
+#     ``n=0`` the ``oracle_distractor`` provider is mathematically identical
+#     to the ``oracle`` provider (gold skill only, no distractors), so we
+#     point at the same cell to avoid duplicate inference. Display name
+#     is still ``Context (N=0)`` so the distractor table reads naturally.
 #   * PD N=0 (``pd_oracle_d0``) has no counterpart in ``_MAIN``:
 #     main's PD shows a BM25 top-50 catalog, whereas PD N=0 shows only
 #     the gold skill.
 _DISTRACTOR_CONTEXT = [
+    # N=0: shared label and provider with ``_MAIN.oracle_skill`` to dedupe.
     Method(
-        label=f"oracle_d{n}",
-        display_name=f"Context (N={n})",
-        provider="oracle_distractor",
-        provider_args={"n": n,
-                       "lexical_source": "bm25",
-                       "semantic_source": "bge"},
+        label="oracle_skill",
+        display_name="Context (N=0)",
+        provider="oracle",
         engine="direct",
         engine_toolqa="react",
-    )
-    for n in (0, 2, 4, 8)
+    ),
+    *[
+        Method(
+            label=f"oracle_d{n}",
+            display_name=f"Context (N={n})",
+            provider="oracle_distractor",
+            provider_args={"n": n,
+                           "lexical_source": "bm25",
+                           "semantic_source": "bge"},
+            engine="direct",
+            engine_toolqa="react",
+        )
+        for n in (2, 4, 8)
+    ],
 ]
 
 _DISTRACTOR_PD = [
@@ -240,7 +288,8 @@ _DISTRACTOR_PD_ONLY = ExperimentSpec(
 
 EXPERIMENTS: dict[str, ExperimentSpec] = {
     e.name: e for e in (
-        _MAIN, _RETRIEVAL, _TOPK_SWEEP,
+        _MAIN, _RETRIEVAL,
+        _TOPK_SWEEP, _TOPK_SWEEP_CTX_ONLY, _TOPK_SWEEP_PD_ONLY,
         _DISTRACTOR, _DISTRACTOR_CTX, _DISTRACTOR_PD_ONLY,
     )
 }
