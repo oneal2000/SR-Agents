@@ -26,8 +26,8 @@ repository provides:
   25,626 web-collected distractors).
 * **SR-Agents** — a baseline family of skill-retrieval-augmented
   agents, spanning five skill-use methods (LLM Direct, Oracle Skill,
-  BM25 Top-1, BM25 Select, Progressive Disclosure) and six retrievers
-  (BM25, TF-IDF, BGE, Contriever, Hybrid, BM25 + LLM Rerank).
+  Full-Skill Injection, LLM Selection, Progressive Disclosure) and six
+  retrievers (BM25, TF-IDF, BGE, Contriever, Hybrid, BM25 + LLM Rerank).
 
 ![SRA paradigm overview](assets/overall.png)
 
@@ -87,7 +87,8 @@ servers accept any value.
 
 ## Quickstart
 
-An end-to-end run of the three stages on TheoremQA with BM25 Top-1:
+An end-to-end run of the three stages on TheoremQA using Full-Skill
+Injection with the BM25 top-1 skill:
 
 ```bash
 # Pick one (examples; any OpenAI-compatible endpoint works).
@@ -175,8 +176,8 @@ combination:
 |---|---|---|---|
 | **LLM Direct** | `none` | `direct` | No external skill — parametric-only baseline |
 | **Oracle Skill** | `oracle` | `direct` | Annotated gold skill prepended (upper bound) |
-| **BM25 Top-1** | `topk(k=1)` | `direct` | Skill Prepending with the BM25 rank-1 skill |
-| **BM25 Select** | `llm_select(pool=50)` | `direct` | Model picks one skill from BM25 top-50, then answers |
+| **Full-Skill Injection** | `topk(k=1)` | `direct` | Full content of the BM25 rank-1 skill prepended to the prompt |
+| **LLM Selection** | `llm_select(pool=50)` | `direct` | Model picks one skill from BM25 top-50, then answers |
 | **Progressive Disclosure** | `topk(k=50)` | `progressive_disclosure` | Model sees a compact skill catalog and loads skills on demand |
 
 For ToolQA the `direct` engine is replaced by `react` and
@@ -248,8 +249,8 @@ Common recipes:
 |---|---|
 | LLM Direct | `--provider none --engine direct` |
 | Oracle Skill | `--provider oracle --engine direct` |
-| BM25 Top-1 | `--provider topk --provider-arg source=… --provider-arg k=1 --engine direct` |
-| BM25 Select | `--provider llm_select --provider-arg source=… --provider-arg pool=50 --engine direct` |
+| Full-Skill Injection | `--provider topk --provider-arg source=… --provider-arg k=1 --engine direct` |
+| LLM Selection | `--provider llm_select --provider-arg source=… --provider-arg pool=50 --engine direct` |
 | Progressive Disclosure | `--provider topk --provider-arg source=… --provider-arg k=50 --engine progressive_disclosure` |
 | ToolQA | For any of the above, use `--engine react` in place of `direct`, or `--engine react_progressive_disclosure` in place of `progressive_disclosure` |
 
@@ -328,24 +329,26 @@ sragents experiment --exp main \
 sragents experiment --exp retrieval_comparison \
     --model <MODEL> --api-base <API_BASE>
 
-# Retrieval-depth sweep: BM25 top-K skills under both Context and
-# Progressive Disclosure exposure modes (K ∈ {1, 2, 4, 8}; K=1 Context
-# overlaps with the main experiment's bm25_top1). Use
-# `--exp topk_sweep_context` or `--exp topk_sweep_progressive_disclosure`
-# to run only one mode.
+# Retrieval-depth sweep: BM25 top-K skills under both Full-Skill
+# Injection and Progressive Disclosure exposure modes (K ∈ {1, 2, 4, 8};
+# K=1 Full-Skill Injection overlaps with the main experiment's bm25_top1).
+# Use `--exp topk_sweep_injection` or
+# `--exp topk_sweep_progressive_disclosure` to run only one mode.
 sragents experiment --exp topk_sweep \
     --model <MODEL> --api-base <API_BASE>
 
-# Noise robustness (oracle + N hard-negative distractors) in both
-# context-injection and progressive-disclosure modes.
+# Noise robustness (oracle + N hard-negative distractors) under both
+# Full Skill Injection and Progressive Disclosure exposure modes.
 sragents experiment --exp distractor \
     --model <MODEL> --api-base <API_BASE>
 ```
 
 Narrow the scope with `--dataset theoremqa logicbench` or
-`--methods bm25_top1 progressive_disclosure`. The runner invokes
-`sragents infer` and `sragents evaluate` for each (dataset, method)
-cell and skips cells whose output files already exist.
+`--methods bm25_top1 progressive_disclosure` (use the method labels —
+the technical identifiers — not the paper-style display names). The
+runner invokes `sragents infer` and `sragents evaluate` for each
+(dataset, method) cell and skips cells whose output files already
+exist.
 
 ## Project layout
 

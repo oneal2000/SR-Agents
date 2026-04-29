@@ -1,8 +1,8 @@
 """Top-K provider: read pre-computed retrieval results and take the top K.
 
-Suitable both for static context injection (engine=direct) and for the
-agent-style loading mode (engine=progressive_disclosure) — the engine
-decides how to use the skills it receives.
+Suitable both for static full-skill injection (engine=direct) and for
+the agent-style loading mode (engine=progressive_disclosure) — the
+engine decides how to use the skills it receives.
 """
 
 import json
