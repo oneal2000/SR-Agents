@@ -15,7 +15,7 @@ of thousands, the prevailing practice of enumerating every candidate
 skill in the prompt stops scaling: context budgets fill up, and
 selection accuracy degrades as the skill list grows.
 
-**Skill-Retrieval Augmentation (SRA)** is an alternative paradigm in
+**Skill Retrieval Augmentation (SRA)** is an alternative paradigm in
 which the agent dynamically retrieves, incorporates, and applies
 relevant skills from a large external skill library on demand. This
 repository provides:
@@ -31,7 +31,7 @@ repository provides:
 
 ![SRA paradigm overview](assets/overall.png)
 
-*The Skill-Retrieval Augmentation paradigm: the agent retrieves candidate
+*The Skill Retrieval Augmentation paradigm: the agent retrieves candidate
 skills from a large external skill library, selectively incorporates
 useful ones into context, and applies them for downstream reasoning
 and acting.*
@@ -133,44 +133,33 @@ The evaluator prints overall accuracy and saves a JSON of the form
 
 ## Pipeline
 
-The paper formulates SRA as three tightly coupled stages — **skill
-retrieval**, **skill incorporation**, and **skill application** (paper
-§2.2). The codebase operationalizes them as three executable stages
-that communicate via JSON files:
+The toolkit is organised as three CLI stages that pass JSON files
+between them:
 
 ```
-Retrieve  ─── Retriever          ───▶ retrieval/*.json   (skill retrieval)
-Infer     ─── Provider × Engine  ───▶ inference/*.jsonl  (skill incorporation + application)
-Evaluate  ─── Evaluator          ───▶ eval/*.json        (end-task scoring)
+sragents retrieve  ─▶ retrieval/*.json   ranked skills + Recall@K, nDCG@K
+sragents infer     ─▶ inference/*.jsonl  raw model output per instance
+sragents evaluate  ─▶ eval/*.json        end-task accuracy
 ```
-
-`infer` jointly covers paper stages 2 and 3. The `Provider` supplies
-the instance's *candidate* skills — possibly one pre-selected skill,
-possibly a larger pool for the engine to narrow further. The `Engine`
-consumes those candidates and produces the answer: simple engines
-(`direct`) statically prepend everything they receive; agentic engines
-(`progressive_disclosure`, `react`, `react_progressive_disclosure`)
-interleave further skill selection with solving inside their reasoning
-loop. `evaluate` scores the
-end-task output — it is not one of the paper's SRA stages.
 
 Each stage's output is consumed by the next via an explicit path
-argument, so any stage can be swapped or rerun in isolation. Every
-stage supports per-instance resume.
+argument, so any stage can be swapped or rerun in isolation, and
+every stage supports per-instance resume.
 
-Inference is decomposed along two orthogonal axes:
+`infer` is parameterised by two orthogonal axes:
 
-* **SkillProvider** — the *candidate skills* an instance receives
-  (none / oracle / top-K retrieval / LLM-selected / oracle +
-  hard-negative distractors). May already be narrowed to one skill
-  or left as a pool.
+* **SkillProvider** — which candidate skills the instance receives:
+  none, oracle (gold), top-K retrieval, LLM-selected, or oracle plus
+  hard-negative distractors. The pool may already be narrowed to a
+  single skill, or left wide for the engine to narrow further.
 * **InferenceEngine** — how those candidates are turned into an
-  answer (static prepending / progressive-disclosure agent loop /
-  ReAct loop for ToolQA). Agentic engines perform further
-  in-loop skill selection.
+  answer. `direct` statically prepends everything it receives;
+  agentic engines (`progressive_disclosure`, `react`,
+  `react_progressive_disclosure`) interleave further skill selection
+  with solving inside their reasoning loop.
 
-Five built-in skill-use methods, each a specific (Provider, Engine)
-combination:
+The five skill-use methods studied in our experiments are specific
+(Provider, Engine) combinations:
 
 | Method | Provider | Engine | Description |
 |---|---|---|---|
@@ -208,9 +197,10 @@ sragents retrieve \
     --top-k 50
 ```
 
-Dense retrievers default to sensible checkpoints (`BAAI/bge-base-en-v1.5`
-for `bge`, `facebook/contriever-msmarco` for `contriever`). Override
-with `--retriever-arg model_path=<hf-name>` to swap in a different model.
+Dense retrievers default to the same checkpoints used in our
+experiments — `BAAI/bge-base-en-v1.5` for `bge` and
+`facebook/contriever-msmarco` for `contriever`. Override with
+`--retriever-arg model_path=<hf-name>` to swap in a different model.
 
 Retrievers can also be cascaded. `sragents rerank` is a second-stage
 retriever: it reads an existing retrieval file, uses an LLM to reorder
@@ -226,7 +216,7 @@ sragents rerank \
     --top-k 50
 ```
 
-`sragents hybrid` is the round-robin fuser used for the paper's Hybrid
+`sragents hybrid` is the round-robin fuser used for our Hybrid
 (BM25 + BGE) retriever — see the reproduction recipe below.
 
 ### 2. Infer
@@ -263,23 +253,17 @@ sragents evaluate \
     --output results/eval/theoremqa-Qwen3-32B-bm25_top1.json
 ```
 
-## Reproducing the paper experiments
+## Reproducing our experiments
 
-The paper reports six retrievers at the retrieval-metric level
-(Recall@K, nDCG@K): BM25, TF-IDF, BGE, Contriever, a round-robin
-hybrid of BM25 and BGE, and an LLM rerank of BM25's top-50. The
-end-to-end retriever-comparison experiment (`retrieval_comparison`
-below) runs five of those — the rank-1 Hybrid is not included because
-round-robin fusion always returns BM25's top-1 at rank 1, so its
-end-to-end numbers are identical to BM25.
-
-Pre-compute the first four retrievers directly, then fuse BM25 + BGE
-into the hybrid file:
+The retrievers used across all experiments are BM25, TF-IDF, BGE,
+Contriever, a round-robin hybrid of BM25 and BGE, and an LLM rerank
+of BM25's top-50. Pre-compute the first-stage retrievers, then fuse
+BM25 + BGE into the hybrid file:
 
 ```bash
 DATASETS="theoremqa logicbench toolqa champ medcalcbench bigcodebench"
 
-# First-stage retrievers
+# First-stage retrievers.
 for ds in $DATASETS; do
     for r in bm25 tfidf bge contriever; do
         sragents retrieve --retriever $r \
@@ -289,7 +273,7 @@ for ds in $DATASETS; do
     done
 done
 
-# Round-robin fusion of BM25 + BGE (for retrieval-metric evaluation).
+# Round-robin fusion of BM25 + BGE.
 for ds in $DATASETS; do
     sragents hybrid \
         --input results/retrieval/$ds-bm25.json \
@@ -314,41 +298,51 @@ for ds in $DATASETS; do
 done
 ```
 
-`sragents experiment --exp retrieval_comparison` will also trigger
-`sragents rerank` on demand if the file is missing.
+`sragents experiment --exp retrieval_comparison` triggers
+`sragents rerank` on demand if the rerank file is missing.
 
-Then run each experiment with the named catalog:
+Skill-retrieval metrics (Recall@K, nDCG@K) are computed by
+`sragents retrieve` and `sragents rerank` directly into their
+output JSONs, so no separate end-to-end run is needed to obtain
+them. The end-to-end experiment runners produce inference traces
+and end-task accuracy:
 
 ```bash
-# Main table: 5 skill-use methods × 6 datasets.
+# Main results: 5 skill-use methods × 6 datasets.
 sragents experiment --exp main \
     --model <MODEL> --api-base <API_BASE>
 
-# Retriever comparison (rank-1 end-to-end under BM25 / TF-IDF / BGE /
-# Contriever / BM25 + Rerank).
+# Retriever comparison: rank-1 end-to-end under BM25, TF-IDF, BGE,
+# Contriever, and BM25 + Rerank. The rank-1 Hybrid is omitted — its
+# round-robin fusion always returns BM25's top-1 at rank 1, so its
+# end-to-end numbers are identical to BM25.
 sragents experiment --exp retrieval_comparison \
     --model <MODEL> --api-base <API_BASE>
 
-# Retrieval-depth sweep: BM25 top-K skills under both Full-Skill
-# Injection and Progressive Disclosure exposure modes (K ∈ {1, 2, 4, 8};
-# K=1 Full-Skill Injection overlaps with the main experiment's bm25_top1).
-# Use `--exp topk_sweep_injection` or
-# `--exp topk_sweep_progressive_disclosure` to run only one mode.
-sragents experiment --exp topk_sweep \
-    --model <MODEL> --api-base <API_BASE>
-
-# Noise robustness (oracle + N hard-negative distractors) under both
-# Full Skill Injection and Progressive Disclosure exposure modes.
+# Noise robustness: gold skill plus N ∈ {0, 2, 4, 8} hard-negative
+# distractors, drawn by alternately picking non-gold candidates from
+# BM25 and BGE rank lists (both retrieval files must already exist).
+# Run under Full Skill Injection and Progressive Disclosure exposure.
 sragents experiment --exp distractor \
     --model <MODEL> --api-base <API_BASE>
 ```
 
-Narrow the scope with `--dataset theoremqa logicbench` or
-`--methods bm25_top1 progressive_disclosure` (use the method labels —
-the technical identifiers — not the paper-style display names). The
-runner invokes `sragents infer` and `sragents evaluate` for each
-(dataset, method) cell and skips cells whose output files already
-exist.
+The skill-loading-rate analyses in our paper are derived from the
+inference traces left behind by `--exp main` rather than from a
+separate run.
+
+The catalog also includes `--exp topk_sweep`, an additional
+ablation that varies BM25 top-K (K ∈ {1, 2, 4, 8}) under both
+exposure modes. Use `--exp topk_sweep_injection` or
+`--exp topk_sweep_progressive_disclosure` to restrict to a single
+mode.
+
+Narrow the scope of any experiment with `--dataset theoremqa
+logicbench` or `--methods bm25_top1 progressive_disclosure` (use
+the technical method labels, not the human-readable display names).
+The runner invokes `sragents infer` and `sragents evaluate` for
+each (dataset, method) cell and skips cells whose output files
+already exist.
 
 ## Project layout
 
@@ -376,7 +370,7 @@ src/sragents/
 │   └── metrics.py
 │
 ├── toolqa/                 # ToolQA tools (used by ReAct engines)
-├── experiments/            # paper experiment catalog + runner
+├── experiments/            # experiment catalog + runner
 └── cli/                    # sragents <subcommand> entry points
 
 data/bench/
