@@ -439,3 +439,22 @@ data/bench/
 ## License
 
 See [LICENSE](LICENSE).
+
+## ⭐ Star and cite
+
+If you find **SRA-Bench** useful, or if any findings in our paper help your research, we would be truly grateful if you could:
+
+⭐ star this repository to help more researchers discover this resource;  
+📌 cite our paper in your work.
+
+Your support really means a lot to us!
+
+```bibtex
+@article{su2026skill,
+  title={Skill Retrieval Augmentation for Agentic AI},
+  author={Su, Weihang and Long, Jianming and Ai, Qingyao and Tang, Yichen and Wang, Changyue and Tu, Yiteng and Liu, Yiqun},
+  journal={arXiv preprint arXiv:2604.24594},
+  year={2026}
+}
+```
+
