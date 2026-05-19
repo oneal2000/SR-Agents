@@ -1,4 +1,8 @@
-# SR-Agents: Skill Retrieval Augmentation for Agentic AI
+# Skill Retrieval Augmentation for Agentic AI
+
+<h2 align="center">
+  RAG retrieves knowledge. SRA retrieves capabilities.
+</h2>
 
 <p align="center">
   <a href="https://arxiv.org/abs/2604.24594">
@@ -16,7 +20,7 @@
 </p>
 
 <p align="center">
-  <b>A community resource for studying and evaluating Skill Retrieval Augmentation.</b><br><br>
+  <b>A community resource for studying and evaluating Skill Retrieval Augmentation (SRA).</b><br><br>
   This repository releases SRA-Bench and SR-Agents, providing data, baselines, and evaluation pipelines for research on retrieval-based skill augmentation in LLM agents.<br><br>
   ⭐ If you find this resource useful, we would be truly grateful if you could star this repo and cite our paper~
 </p>
