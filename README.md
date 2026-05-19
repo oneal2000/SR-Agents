@@ -1,4 +1,6 @@
-# Skill Retrieval Augmentation for Agentic AI
+<h1 align="center">
+  Skill Retrieval Augmentation for Agentic AI
+</h1>
 
 <h2 align="center">
   RAG retrieves knowledge. SRA retrieves capabilities.
