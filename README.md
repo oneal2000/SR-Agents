@@ -7,6 +7,12 @@
 </h2>
 
 <p align="center">
+  <a href="https://sr-agents.github.io">
+    <img src="https://img.shields.io/badge/🌐%20Project%20Website-SR--Agents.github.io-blue?style=for-the-badge" alt="Project Website">
+  </a>
+</p>
+
+<p align="center">
   <a href="https://arxiv.org/abs/2604.24594">
     <img src="https://img.shields.io/badge/arXiv-2604.24594-b31b1b.svg" alt="arXiv">
   </a>
