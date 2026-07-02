@@ -1,6 +1,6 @@
 [project]
 name = "sragents"
-version = "0.1.0"
+version = "1.0.1"
 description = "SR-Agents: baseline skill-retrieval-augmented agents and the SRA-Bench benchmark for LLM skill retrieval, incorporation, and application."
 requires-python = ">=3.10,<3.13"
 readme = "README.md"
