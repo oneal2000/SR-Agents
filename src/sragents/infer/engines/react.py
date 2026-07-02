@@ -187,14 +187,14 @@ class ReActAgent:
         )
 
     def _parse_response(self, response: str) -> tuple[str, str]:
-        response = strip_think_tags(response).strip()
+        """Extract the model thought and action from one ReAct turn.
 
-        # If the model self-generates an "Observation N:" line (e.g. because
-        # the server ignored the stop token), truncate there so the
-        # fabricated observation never contaminates raw_output.
-        obs_split = re.search(r"\n\s*Observation\s*\d*\s*:", response)
-        if obs_split:
-            response = response[: obs_split.start()].rstrip()
+        ToolQA results in the original experiments parsed the current-step
+        ``Action N:`` from the full model response first, and only then fell
+        back to a generic action pattern. Keep that order so replayed earlier
+        scratchpad lines do not hide the current action.
+        """
+        response = strip_think_tags(response).strip()
 
         action_pattern = rf"Action\s*{self.step_n}\s*:\s*"
         parts = re.split(action_pattern, response, maxsplit=1)
